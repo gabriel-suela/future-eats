@@ -42,7 +42,6 @@ const SignUp = () => {
     }
   }
 
-
   const cpfMask = (value) => {
     return value
       .replace(/\D/g, "")
@@ -59,6 +58,7 @@ const SignUp = () => {
             console.log(res.data)
             clean()
             setConfirmPassword('')
+            localStorage.getItem('token', res.data.token)
             alert('Usuário Cadastrado com sucesso!!')
 
         })
