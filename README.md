@@ -21,7 +21,7 @@
 
 <h2 id="link">🔗 Link surge: Link para visualização do site</h2>
 
-<a href="#">FutureEats</a>
+<a href="#">FourFood</a>
 
 <h2 id="imagens">📱 Imagens do site</h2>
 
