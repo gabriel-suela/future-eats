@@ -6,6 +6,7 @@ import { useForm } from "../../hooks/useForm";
 import { ButtonStyled, DivPassword, Form, InputMaterial, Main } from "./styled";
 import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
+import { goToSignUpAddress } from "../../routes/coordinator";
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -53,16 +54,17 @@ const SignUp = () => {
     await axios
       .post(`${BASE_URL}/signup`, form)
       .then((res) => {
+        localStorage.setItem('token', res.data.token)
+        alert("Usuário Cadastrado com sucesso!!");
         clean();
         setConfirmPassword("");
-        localStorage.getItem("token", res.data.token);
-        alert("Usuário Cadastrado com sucesso!!");
+        console.log(res.data)
       })
       .catch((err) => {
         alert(`${err.response.data.message}`);
       });
   };
-
+  
   return (
     <Main>
       <p>Cadastrar</p>

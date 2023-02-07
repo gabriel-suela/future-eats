@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 export const InputMaterial = styled(TextField)`
   && {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 `;
 

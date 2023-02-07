@@ -3,7 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/url";
 import { useForm } from "../../hooks/useForm";
-import { goToLogin } from "../../routes/coordinator";
+import { goToFeed, } from "../../routes/coordinator";
 import { ButtonStyled, Form, InputMaterial, Main } from "./styled";
 
 
@@ -20,26 +20,28 @@ const SignUpAddress = () => {
 
     const navigate = useNavigate()
 
+    
+    const addAddress = async() => {
+      const token = localStorage.getItem('token')
+      await axios.put(`${BASE_URL}/address`, form,{headers:
+        {auth: token}})
+      .then((res)=>{
+        localStorage.setItem('token', res.data.token)
+        alert('Endereço cadastrado com sucesso')
+        clear()
+      })
+      .catch((err)=>{
+        
+        alert(`${err.response.data.message}`)
+      })
+    }
+
+
     const onSubmitForm = (e) => {
-        e.peventDefault()
-        signUpAddress()
-        //goToLogin(navigate)
-    }
-
-    const signUpAddress = async() => {
-        const token = localStorage.getItem('token')
-        await axios.put(`${BASE_URL}/address`, form, {headers:{auth: token}})
-        .then((res)=>{
-            clear()
-            console.log(res.data)
-            alert('Endereço cadastrado com sucesso!!')
-
-        })
-        .catch((err)=>{
-            alert(`${err.response.data.message}`)
-        })
-    }
-
+      e.preventDefault()
+      addAddress()
+      goToFeed(navigate)
+  }
     return(
     <Main>
       <p>Meu endereço</p>
@@ -109,7 +111,7 @@ const SignUpAddress = () => {
           value={form.state}
           onChange={onChange}
         />
-        <ButtonStyled type={"submit"}>Confirmar</ButtonStyled> 
+        <ButtonStyled type="submit">Confirmar</ButtonStyled> 
         </Form>
         </Main>
     )

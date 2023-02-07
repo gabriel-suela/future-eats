@@ -13,3 +13,4 @@ export const goToSignUpAddress = (navigate) => {
 export const goToFeed = (navigate) => {
     navigate('/feed')
 }
+
