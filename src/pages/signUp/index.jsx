@@ -1,8 +1,11 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { ButtonStyled, DivPassword, Form, InputMaterial, Main } from "./styled";
+import { BASE_URL } from "../../constants/url";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -17,6 +20,7 @@ const SignUp = () => {
   const [checkErrPass, setCheckErrPass] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false)
 
+  const navigate = useNavigate()
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -27,15 +31,16 @@ const SignUp = () => {
   }
 
 
-//   const onSubmitForm = (e) => {
-//     e.preventDefault()
-//     if(form.password !== confirmPassword){
-//         setCheckErrPass(true)
-//     }else{
-//         setCheckErrPass(false)
-//     }
-//   }
-
+  const onSubmitForm = (e) => {
+    e.preventDefault()
+    if(form.password !== confirmPassword){
+        setCheckErrPass(true)
+    }else{
+        setCheckErrPass(false)
+        signUp()
+        goToSignUpAddress(navigate)
+    }
+  }
 
 
   const cpfMask = (value) => {
@@ -47,9 +52,20 @@ const SignUp = () => {
       .replace(/(-\d{2})\d+?$/, "$1");
   };
 
-  const onSubmitForm = (e) => {
-    e.preventDefault();
-  };
+
+    const signUp = async() => {
+        await axios.post(`${BASE_URL}/signup`, form)
+        .then((res)=>{
+            console.log(res.data)
+            clean()
+            setConfirmPassword('')
+            alert('Usuário Cadastrado com sucesso!!')
+
+        })
+        .catch((err)=>{
+            console.log(err.response.data)
+        })
+    }
 
   return (
     <Main>
@@ -135,7 +151,7 @@ const SignUp = () => {
             {showConfirmedPassword ? <VisibilityOff /> : <Visibility />}
           </IconButton>
         </DivPassword>
-        <ButtonStyled onChange={onSubmitForm}>Confirmar</ButtonStyled>
+        <ButtonStyled type={"submit"}>Confirmar</ButtonStyled>
       </Form>
       
     </Main>

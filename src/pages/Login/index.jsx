@@ -7,10 +7,13 @@ import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToFeed } from "../../routes/coordinator";
+import { useForm } from "../../hooks/useForm";
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {form, onChange, clean} = useForm({
+    email:"",
+    password:""
+})
   const [showPassword, setShowPassword] = useState(false);
   const [errEmail, setErrEmail] = useState("");
   const [errPass, setErrPass] = useState("");
@@ -32,17 +35,14 @@ const LoginPage = () => {
     loginApi(userLogin);
   };
 
-  const loginApi = async (body) => {
+  const loginApi = async () => {
     await axios
-      .post(`${BASE_URL}/login`, body)
+      .post(`${BASE_URL}/login`, form)
       .then((res) => {
-        setEmail("");
-        setPassword("");
-        setErrEmail("");
-        setErrPass("");
+        localStorage.setItem('token', res.data.token)
+        clean()
         setCheckErrEmail(false);
         setCheckErrPass(false);
-        localStorage.setItem('token', res.data.token)
         alert(`Bem vindo ${res.data.user.name}`)
         goToFeed(navigate)
       })
@@ -66,12 +66,13 @@ const LoginPage = () => {
           error={checkErrEmail}
           helperText={checkErrEmail ? errEmail : ""}
           id="email"
+          name={"email"}
           label="Email"
           type={"email"}
           variant="outlined"
           placeholder={"email@email.com"}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={form.email}
+          onChange={onChange}
           required
         />
         <DivPassword>
@@ -79,12 +80,13 @@ const LoginPage = () => {
             error={checkErrPass}
             helperText={checkErrPass ? errPass : ""}
             id="password"
+            name={"password"}
             label="Password"
             type={showPassword ? "text" : "password"}
             variant="outlined"
             placeholder={"Mínimo 6 caracteres"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={form.password}
+            onChange={onChange}
             inputProps={{
               minLength: 6,
               title: "A senha deve conter no mínimo 6 caracteres",

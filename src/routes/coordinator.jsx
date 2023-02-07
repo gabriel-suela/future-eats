@@ -7,7 +7,7 @@ export const goToSignUp = (navigate) => {
 }
 
 export const goToSignUpAddress = (navigate) => {
-    navigate('/signUpAddress')
+    navigate('/signUp/address')
 }
 
 export const goToFeed = (navigate) => {
