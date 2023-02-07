@@ -1,0 +1,145 @@
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import React, { useState } from "react";
+import { useForm } from "../../hooks/useForm";
+import { ButtonStyled, DivPassword, Form, InputMaterial, Main } from "./styled";
+
+const SignUp = () => {
+  const { form, onChange, clean } = useForm({
+    name: "",
+    email: "",
+    cpf: "",
+    password: ""
+  });
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [showCheckPass, setShowCheckPass] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const [checkErrPass, setCheckErrPass] = useState(false);
+  const [showConfirmedPassword, setShowConfirmedPassword] = useState(false)
+
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleClickShowConfirmedPassword = () => {
+    setShowConfirmedPassword(!showConfirmedPassword);
+  }
+
+
+//   const onSubmitForm = (e) => {
+//     e.preventDefault()
+//     if(form.password !== confirmPassword){
+//         setCheckErrPass(true)
+//     }else{
+//         setCheckErrPass(false)
+//     }
+//   }
+
+
+
+  const cpfMask = (value) => {
+    return value
+      .replace(/\D/g, "")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d)/, "$1.$2")
+      .replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+      .replace(/(-\d{2})\d+?$/, "$1");
+  };
+
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <Main>
+      <p>Cadastrar</p>
+      <Form onSubmit={onSubmitForm}>
+        <InputMaterial
+          id="outlined-basic"
+          label={"Nome"}
+          name="name"
+          type={"text"}
+          placeholder={"Digite seu nome"}
+          variant="outlined"
+          value={form.name}
+          onChange={onChange}
+        />
+
+        <InputMaterial
+          id="outlined-basic"
+          label={"Email"}
+          name="email"
+          type={"email"}
+          placeholder={"Digite seu Email"}
+          variant="outlined"
+          value={form.email}
+          onChange={onChange}
+        />
+
+        <InputMaterial
+          id="outlined-basic"
+          label={"CPF"}
+          name="cpf"
+          type={"text"}
+          placeholder={"Digite seu Cpf"}
+          variant="outlined"
+          value={cpfMask(form.cpf)}
+          onChange={onChange}
+        />
+
+        <DivPassword>
+        <InputMaterial
+            id="password"
+            label="Password"
+            name='password'
+            type={showPassword ? "text" : "password"}
+            variant="outlined"
+            placeholder={"Mínimo 6 caracteres"}
+            value={form.password}
+            onChange={onChange}
+            inputProps={{
+              minLength: 6,
+              title: "A senha deve conter no mínimo 6 caracteres",
+            }}
+            required
+          />
+          <IconButton
+            aria-label="toggle password visibility"
+            onClick={handleClickShowPassword}
+            edge="end"
+          >
+            {showPassword ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
+        </DivPassword>
+
+        <DivPassword>
+        <InputMaterial
+            error={checkErrPass}
+            helperText={checkErrPass ? "Deve ser a mesma que a anterior." : ""}
+            id="password-confirm"
+            name='password-confirm'
+            label="Confirmar"
+            type={showConfirmedPassword ? "text" : "password"}
+            variant="outlined"
+            placeholder={"Mínimo 6 caracteres"}
+            value={confirmPassword}
+            onChange={(e)=>{setConfirmPassword(e.target.value)}}
+            required
+            ></InputMaterial>
+          <IconButton
+            aria-label="toggle password visibility"
+            onClick={handleClickShowConfirmedPassword}
+            edge="end"
+          >
+            {showConfirmedPassword ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
+        </DivPassword>
+        <ButtonStyled onChange={onSubmitForm}>Confirmar</ButtonStyled>
+      </Form>
+      
+    </Main>
+  );
+};
+
+export default SignUp;
