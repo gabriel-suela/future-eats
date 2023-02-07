@@ -22,6 +22,7 @@ export const Main = styled.div`
 `;
 
 export const Form = styled.form`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   height: 50%;
@@ -33,6 +34,7 @@ export const ButtonStyled = styled(Button)`
     color: black;
     background-color: #e8222e;
     width: 100%;
+    margin-top: 10px;
   }
 `;
 

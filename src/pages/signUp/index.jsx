@@ -1,5 +1,5 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import { IconButton, InputAdornment } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
@@ -12,15 +12,14 @@ const SignUp = () => {
     name: "",
     email: "",
     cpf: "",
-    password: ""
+    password: "",
   });
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [showCheckPass, setShowCheckPass] = useState(false)
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [checkErrPass, setCheckErrPass] = useState(false);
-  const [showConfirmedPassword, setShowConfirmedPassword] = useState(false)
+  const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -28,19 +27,18 @@ const SignUp = () => {
 
   const handleClickShowConfirmedPassword = () => {
     setShowConfirmedPassword(!showConfirmedPassword);
-  }
-
+  };
 
   const onSubmitForm = (e) => {
-    e.preventDefault()
-    if(form.password !== confirmPassword){
-        setCheckErrPass(true)
-    }else{
-        setCheckErrPass(false)
-        signUp()
-        goToSignUpAddress(navigate)
+    e.preventDefault();
+    if (form.password !== confirmPassword) {
+      setCheckErrPass(true);
+    } else {
+      setCheckErrPass(false);
+      signUp();
+      goToSignUpAddress(navigate);
     }
-  }
+  };
 
   const cpfMask = (value) => {
     return value
@@ -51,21 +49,19 @@ const SignUp = () => {
       .replace(/(-\d{2})\d+?$/, "$1");
   };
 
-
-    const signUp = async() => {
-        await axios.post(`${BASE_URL}/signup`, form)
-        .then((res)=>{
-            console.log(res.data)
-            clean()
-            setConfirmPassword('')
-            localStorage.getItem('token', res.data.token)
-            alert('Usuário Cadastrado com sucesso!!')
-
-        })
-        .catch((err)=>{
-            console.log(err.response.data)
-        })
-    }
+  const signUp = async () => {
+    await axios
+      .post(`${BASE_URL}/signup`, form)
+      .then((res) => {
+        clean();
+        setConfirmPassword("");
+        localStorage.getItem("token", res.data.token);
+        alert("Usuário Cadastrado com sucesso!!");
+      })
+      .catch((err) => {
+        alert(`${err.response.data.message}`);
+      });
+  };
 
   return (
     <Main>
@@ -105,10 +101,10 @@ const SignUp = () => {
         />
 
         <DivPassword>
-        <InputMaterial
+          <InputMaterial
             id="password"
             label="Password"
-            name='password'
+            name="password"
             type={showPassword ? "text" : "password"}
             variant="outlined"
             placeholder={"Mínimo 6 caracteres"}
@@ -130,19 +126,21 @@ const SignUp = () => {
         </DivPassword>
 
         <DivPassword>
-        <InputMaterial
+          <InputMaterial
             error={checkErrPass}
             helperText={checkErrPass ? "Deve ser a mesma que a anterior." : ""}
             id="password-confirm"
-            name='password-confirm'
+            name="password-confirm"
             label="Confirmar"
             type={showConfirmedPassword ? "text" : "password"}
             variant="outlined"
             placeholder={"Mínimo 6 caracteres"}
             value={confirmPassword}
-            onChange={(e)=>{setConfirmPassword(e.target.value)}}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
             required
-            ></InputMaterial>
+          ></InputMaterial>
           <IconButton
             aria-label="toggle password visibility"
             onClick={handleClickShowConfirmedPassword}
@@ -153,7 +151,6 @@ const SignUp = () => {
         </DivPassword>
         <ButtonStyled type={"submit"}>Confirmar</ButtonStyled>
       </Form>
-      
     </Main>
   );
 };
