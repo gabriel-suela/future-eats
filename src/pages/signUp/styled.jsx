@@ -32,7 +32,7 @@ export const Form = styled.form`
 export const ButtonStyled = styled(Button)`
   && {
     color: black;
-    background-color: #e8222e;
+    background-color: #5cb646;
     width: 100%;
   }
 `;

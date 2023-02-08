@@ -24,7 +24,7 @@ export const RestaurantName = styled.h3`
     font-style: normal;
     line-height: normal;
     letter-spacing: -0.39px;
-    color:#e8222e;
+    color:#5cb646;
     margin: 12px 16px 4px;
 `
 

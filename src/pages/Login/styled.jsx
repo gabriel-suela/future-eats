@@ -5,12 +5,13 @@ import TextField from "@mui/material/TextField";
 export const InputMaterial = styled(TextField)`
   && {
     width: 100%;
+    margin: 8px 0;
   }
 `;
 
 export const Main = styled.div`
   padding: 5px 0;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,19 +19,28 @@ export const Main = styled.div`
   p {
     font-size: 1rem;
   }
+  img {
+    width: 104px;
+    height: 58px;
+    margin: 68px 128px 16px;
+    object-fit: contain;
+  }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  height: 50%;
   width: 90%;
   justify-content: space-evenly;
 `;
 export const ButtonStyled = styled(Button)`
   && {
+    margin-top: 16px;
+    height: 42px;
+    padding: 12px 16px;
+    border-radius: 2px;
     color: black;
-    background-color: #e8222e;
+    background-color: #5cb646;
     width: 100%;
   }
 `;
@@ -42,7 +52,7 @@ export const DivPassword = styled.div`
 `;
 
 export const DivButton = styled.div`
-     button{
+  button {
     width: 360px;
     height: 42px;
     border: 0;
@@ -50,5 +60,6 @@ export const DivButton = styled.div`
     font-family: Roboto;
     font-size: 16px;
     letter-spacing: -0.39px;
+    margin-top: 28px;
   }
-`
+`;

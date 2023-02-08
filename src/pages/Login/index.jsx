@@ -8,6 +8,7 @@ import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { useForm } from "../../hooks/useForm";
+import Logo from "../../assets/Logo-Future.png"
 
 const LoginPage = () => {
   const {form, onChange, clean} = useForm({
@@ -60,6 +61,7 @@ const LoginPage = () => {
 
   return (
     <Main>
+      <img src={Logo}></img>
       <p>Entrar</p>
       <Form onSubmit={onSubmitLogin}>
         <InputMaterial
@@ -88,18 +90,19 @@ const LoginPage = () => {
             value={form.password}
             onChange={onChange}
             inputProps={{
-              minLength: 6,
-              title: "A senha deve conter no mínimo 6 caracteres",
-            }}
-            required
-          />
-          <IconButton
+              endAdornment:(
+                <IconButton
             aria-label="toggle password visibility"
             onClick={handleClickShowPassword}
             edge="end"
           >
             {showPassword ? <VisibilityOff /> : <Visibility />}
           </IconButton>
+              )
+            }}
+            required
+          />
+          
         </DivPassword>
         <ButtonStyled type="submit">Entrar</ButtonStyled>
       </Form>
