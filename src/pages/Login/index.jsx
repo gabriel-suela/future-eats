@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Main, Form, ButtonStyled, DivPassword, InputMaterial } from "./styled";
+import { Main, Form, ButtonStyled, DivPassword, InputMaterial, DivButton } from "./styled";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { IconButton } from "@mui/material";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
-import { goToFeed } from "../../routes/coordinator";
+import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { useForm } from "../../hooks/useForm";
 
 const LoginPage = () => {
@@ -103,6 +103,10 @@ const LoginPage = () => {
         </DivPassword>
         <ButtonStyled type="submit">Entrar</ButtonStyled>
       </Form>
+      <DivButton>
+      <button onClick={()=>goToSignUp(navigate)}>Não possui cadastro? Clique aqui.</button>
+      </DivButton>
+      
     </Main>
   );
 };
