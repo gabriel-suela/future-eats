@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { InputAdornment, InputBase} from "@mui/material";
+import { InputAdornment, InputBase } from "@mui/material";
 import CardRestaurant from "../../components/CardRestaurant";
 import Header from "../../components/Header";
 import { BASE_URL } from "../../constants/url";
@@ -38,12 +38,19 @@ const Feed = () => {
 
   const filterCategory = (restaurants) => {
     const arrayAux = [];
-    restaurants &&
-      restaurants.map((res) => {
-        arrayAux.push(res.category);
-      });
+
+    restaurants.map((res) => {
+      arrayAux.push(res.category);
+    });
     const takeOutRepeat = [...new Set(arrayAux)];
-    setCategoryRestaurant(takeOutRepeat);
+
+    const changeObjectArr = []
+
+    takeOutRepeat.map((category)=>{
+      const insertObject = {category, select:false}
+      changeObjectArr.push(insertObject)
+    })
+    setCategoryRestaurant(changeObjectArr);
   };
 
   const filterRestaurant = restaurants
@@ -62,6 +69,25 @@ const Feed = () => {
     .map((restaurant, item) => {
       return <CardRestaurant key={item} restaurant={restaurant} />;
     });
+
+    const  changeCategory = (category) => {
+      setValueCategory(category)
+
+      const result = categoryRestaurant.map((cat)=>{
+        if(cat.category === cat){
+          return {
+            ...cat,
+            select: true
+          }
+        }else{
+          return{
+            ...cat,
+            select:false
+          }
+        }
+      })
+      setCategoryRestaurant(result)
+    }
 
   return (
     <ContainerFeed>
@@ -85,11 +111,11 @@ const Feed = () => {
           {categoryRestaurant.map((category, item) => {
             return (
               <MenuItem
-              key={item}
-                select={false}
-                onClick={() => setValueCategory(category)}
+                key={item}
+                select={category.select}
+                onClick={() => changeCategory(category.category)}
               >
-                {category}
+                {category.category}
               </MenuItem>
             );
           })}

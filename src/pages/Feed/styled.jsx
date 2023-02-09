@@ -13,7 +13,7 @@ export const CardsRestaurant = styled.div`
 export const Menu = styled.div `
     width: 100%;
     display: flex;
-    overflow-x: auto;
+    overflow-y: scroll;
     height: 2.625rem;
 `
 
@@ -25,6 +25,6 @@ border: none;
 outline: none;
 padding: 0 1rem;
 background: transparent;
-color: #5cb646;
-
+text-align: center;
+color: ${(category)=> category.select ? "#5cb646": "black"};
 `
