@@ -9,6 +9,21 @@ export const InputMaterial = styled(TextField)`
   }
 `;
 
+export const LoginPageLoading = styled.div `
+width: 100%;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: fit;
+}
+
+`
+
 export const Main = styled.div`
   padding: 5px 0;
   width: 100vw;

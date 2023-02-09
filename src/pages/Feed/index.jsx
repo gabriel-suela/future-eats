@@ -82,9 +82,10 @@ const Feed = () => {
         }
         <Menu>
           <MenuItem onClick={() => setValueCategory("")}>Todos</MenuItem>
-          {categoryRestaurant.map((category) => {
+          {categoryRestaurant.map((category, item) => {
             return (
               <MenuItem
+              key={item}
                 select={false}
                 onClick={() => setValueCategory(category)}
               >
