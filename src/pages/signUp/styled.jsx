@@ -18,6 +18,7 @@ export const Main = styled.div`
   align-items: center;
   p {
     font-size: 1rem;
+    margin-bottom: 20px;
   }
 `;
 
@@ -31,6 +32,10 @@ export const Form = styled.form`
 `;
 export const ButtonStyled = styled(Button)`
   && {
+    margin-top: 16px;
+    height: 42px;
+    padding: 12px 16px;
+    border-radius: 2px;
     color: black;
     background-color: #5cb646;
     width: 100%;

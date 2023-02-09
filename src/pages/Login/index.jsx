@@ -55,7 +55,6 @@ const LoginPage = () => {
           setErrEmail(err.response.data.message);
           setCheckErrEmail(true);
         }
-        console.log(err.response.data.menssage);
       });
   };
 
@@ -89,16 +88,7 @@ const LoginPage = () => {
             placeholder={"Mínimo 6 caracteres"}
             value={form.password}
             onChange={onChange}
-            inputProps={{
-              endAdornment:(
-                <IconButton
-            aria-label="toggle password visibility"
-            onClick={handleClickShowPassword}
-            edge="end"
-          >
-            {showPassword ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
-              )
+            inputProps={{ minlenght:6
             }}
             required
           />

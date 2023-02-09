@@ -18,6 +18,7 @@ export const Main = styled.div`
   align-items: center;
   p {
     font-size: 1rem;
+    margin-bottom: 20px;
   }
   img {
     width: 104px;

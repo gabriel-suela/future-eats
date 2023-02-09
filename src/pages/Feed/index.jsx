@@ -8,10 +8,12 @@ import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { CardsRestaurant, ContainerFeed } from "./styled";
 import SearchIcon from "@mui/icons-material/Search";
+import { goToRestaurants } from "../../routes/coordinator";
+import { useNavigate } from "react-router-dom";
 
 const Feed = () => {
   const [restaurants, setRestaurants] = useState([]);
-
+  const navigate = useNavigate()
   useProtectedPage();
   const getRestaurants = async () => {
     const token = localStorage.getItem("token");
@@ -35,8 +37,8 @@ const Feed = () => {
 
   return (
     <ContainerFeed>
-      <Header title={"iFuture"}></Header>
-      <CardsRestaurant>
+      <Header title={"Future Eats"}></Header>
+      <CardsRestaurant onClick={()=> goToRestaurants(navigate)}>
         {
           <InputBase
             placeholder="Restaurantes"
@@ -49,7 +51,7 @@ const Feed = () => {
           />
         }
         {restaurants.map((restaurant, item) => {
-          return <CardRestaurant key={item} restaurant={restaurant} />;
+          return <CardRestaurant key={item} restaurant={restaurant}  />;
         })}
       </CardsRestaurant>
     </ContainerFeed>

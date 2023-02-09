@@ -14,3 +14,7 @@ export const goToFeed = (navigate) => {
     navigate('/feed')
 }
 
+export const goToRestaurants = (navigate) => {
+    navigate('/feed/:restaurantId')
+}
+
