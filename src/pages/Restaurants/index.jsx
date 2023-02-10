@@ -19,13 +19,13 @@ const Restaurants = () => {
         },
       })
       .then((res) => {
-        console.log(res.data.restaurant);
         setRestaurant(res.data.restaurant);
       })
       .catch((err) => {
         console.log(err.data.response.message);
       });
   };
+
 
   useEffect(() => {
     getRestaurants();
@@ -36,11 +36,15 @@ const Restaurants = () => {
       <CardRestaurant>
         <CardRestaurantDetails restaurant={restaurant} />
         {
-            restaurant.products && restaurant.products.map((products)=>{
-                return <CardProduct key={products.id} products={products} />
+            restaurant.products && restaurant.products.map((restaurant)=>{
+              console.log(restaurant);
+              return <CardProduct //key={product.id}
+               product={restaurant} />
             })
-        }
+             
+        } 
       </CardRestaurant>
+      
     </ContainerRestaurant>
   );
 };
