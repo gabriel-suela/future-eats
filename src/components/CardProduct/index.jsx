@@ -1,13 +1,14 @@
 import React from "react";
-import { ContainerCardProduct, ProductImage } from "./styled";
+import { BoxInform, ContainerCardProduct, ProductImage, ProductName, ProductQuantity } from "./styled";
 
 const CardProduct = (products) => {
     return (
         <ContainerCardProduct>
-            <p>{products.category}</p>
-            <p>{products.name}</p>
-            <p>{products.price}</p>
-           
+            <ProductImage src={products.photoUrl}/>
+            <BoxInform>
+                <ProductName>{products.name}</ProductName>
+                <ProductQuantity>{products.price}</ProductQuantity>
+            </BoxInform>
         </ContainerCardProduct>
     )
 }

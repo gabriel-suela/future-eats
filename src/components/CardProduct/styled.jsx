@@ -1,18 +1,17 @@
 import styled from 'styled-components'
 
 export const ContainerCardProduct = styled.div `
-    /* width: 100%;
     margin: 0.5rem 0;
-    display: flex;
+    /* display: flex; */
     border: 1px solid grey;
-    border-radius: 8px; */
+    border-radius: 8px;
 
 `
-export const ProductImage = styled.img `
-    width: 100%;
-    height: 7.5rem;
-    border-radius: 12px 12px 0 0;
-    object-fit: contain;
+export const ProductImage = styled.img`
+    /* width: 100%; */
+    /* height: 7.5rem; */
+    /* border-radius: 12px 12px 0 0; */
+    /* object-fit: contain; */
 `
 
 export const BoxInform = styled.div`
