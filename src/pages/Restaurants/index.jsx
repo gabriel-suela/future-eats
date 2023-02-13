@@ -31,6 +31,8 @@ const Restaurants = () => {
     getRestaurants();
   }, []);
 
+  
+
   return (
     <ContainerRestaurant>
       <CardRestaurant>

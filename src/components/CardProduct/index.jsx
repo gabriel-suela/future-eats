@@ -7,6 +7,7 @@ const CardProduct = ({product}) => {
             <ProductImage src={product.photoUrl}/>
             <BoxInform>
                 <ProductName>{product.name}</ProductName>
+                <p>{product.description}</p>
                 <ProductQuantity>R${product.price}</ProductQuantity>
             </BoxInform>
         </ContainerCardProduct>
