@@ -5,6 +5,7 @@ import CardProduct from "../../components/CardProduct";
 import CardRestaurantDetails from "../../components/CardRestaurantDetails";
 import { BASE_URL } from "../../constants/url";
 import { CardRestaurant, ContainerRestaurant } from "./styled";
+import Header from "../../components/Header"
 
 const Restaurants = () => {
   const [restaurant, setRestaurant] = useState({});
@@ -35,6 +36,7 @@ const Restaurants = () => {
 
   return (
     <ContainerRestaurant>
+      <Header title={"Restaurante"}></Header>
       <CardRestaurant>
         <CardRestaurantDetails restaurant={restaurant} />
         {

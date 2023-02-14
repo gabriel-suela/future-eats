@@ -6,6 +6,7 @@ export const ContainerCardProduct = styled.div`
   border: 1px solid grey;
   border-radius: 8px;
   height: 7rem;
+  align-items: center;
 `;
 export const ProductImage = styled.img`
   width: 96px;
@@ -38,13 +39,12 @@ export const BoxNameQuantity = styled.div`
 export const ProductQuantity = styled.h3`
   font-family: Roboto;
   font-weight: normal;
-  padding: 1rem 0 ;
 `;
 export const ProductName = styled.h3`
   font-family: Roboto;
   font-size: 1rem;
   color: #5cb646;
-  margin-top: 16px;
+  font-weight: normal;
 `;
 
 export const PriceInfo = styled.p``;
