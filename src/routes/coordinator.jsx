@@ -18,3 +18,11 @@ export const goToRestaurants = (navigate,id) => {
     navigate(`/feed/${id}`)
 }
 
+export const goToCart = (navigate) => {
+    navigate('/cart')
+}
+
+export const goToProfile = (navigate) => {
+    navigate('/profile')
+}
+

@@ -7,6 +7,7 @@ import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { CardsRestaurant, ContainerFeed, Menu, MenuItem } from "./styled";
 import SearchIcon from "@mui/icons-material/Search";
+import Footer from "../../components/Footer";
 
 const Feed = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -122,6 +123,7 @@ const Feed = () => {
         </Menu>
         {filterRestaurant}
       </CardsRestaurant>
+      <Footer></Footer>
     </ContainerFeed>
   );
 };
