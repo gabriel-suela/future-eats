@@ -26,5 +26,5 @@ outline: none;
 padding: 0 1rem;
 background: transparent;
 text-align: center;
-color: ${(category)=> category.selected ? "#5cb646": "black"};
+color: ${(category) => category.select ? "#5cb646": "black"};
 `

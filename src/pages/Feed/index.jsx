@@ -14,6 +14,7 @@ const Feed = () => {
   const [inputText, setInputText] = useState("");
   const [categoryRestaurant, setCategoryRestaurant] = useState([]);
   const [valueCategory, setValueCategory] = useState("");
+  const [isActive, setIsActive] = useState(false);
 
   useProtectedPage();
   const getRestaurants = async () => {
@@ -45,12 +46,12 @@ const Feed = () => {
     });
     const takeOutRepeat = [...new Set(arrayAux)];
 
-    const changeObjectArr = []
+    const changeObjectArr = [];
 
-    takeOutRepeat.map((category)=>{
-      const insertObject = {category, select:false}
-      changeObjectArr.push(insertObject)
-    })
+    takeOutRepeat.map((category) => {
+      const insertObject = { category, select: false };
+      changeObjectArr.push(insertObject);
+    });
     setCategoryRestaurant(changeObjectArr);
   };
 
@@ -71,24 +72,24 @@ const Feed = () => {
       return <CardRestaurant key={item} restaurant={restaurant} />;
     });
 
-    const  changeCategory = (category) => {
-      setValueCategory(category)
+  const changeCategory = (category) => {
+    setValueCategory(category);
 
-      const result = categoryRestaurant.map((cat)=>{
-        if(cat.category === cat){
-          return {
-            ...cat,
-            select: true
-          }
-        }else{
-          return{
-            ...cat,
-            select:false
-          }
-        }
-      })
-      setCategoryRestaurant(result)
-    }
+    const result = categoryRestaurant.map((cat) => {
+      if (cat.category === cat) {
+        return {
+          ...cat,
+          select: true,
+        };
+      } else {
+        return {
+          ...cat,
+          select: false,
+        };
+      }
+    });
+    setCategoryRestaurant(result);
+  };
 
   return (
     <ContainerFeed>
@@ -114,7 +115,9 @@ const Feed = () => {
               <MenuItem
                 key={item}
                 select={category.select}
-                onClick={() => changeCategory(category.category)}
+                onClick={() => {
+                  changeCategory(category.category);
+                }}
               >
                 {category.category}
               </MenuItem>

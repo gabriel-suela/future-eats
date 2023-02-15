@@ -17,15 +17,15 @@ export const ProductImage = styled.img`
 `;
 
 export const BoxInform = styled.div`
-    width: 100%;
+  width: 100%;
+  margin-top: 20px;
 
-    p{
-      font-size: 12px;
-      color: grey;
-      margin: 8px 0;
-      font-family: Roboto;
-      
-    }
+  p {
+    font-size: 12px;
+    color: grey;
+    margin: 8px 0;
+    font-family: Roboto;
+  }
 `;
 
 export const BoxNameQuantity = styled.div`
@@ -36,9 +36,27 @@ export const BoxNameQuantity = styled.div`
   width: 2.063rem;
   height: 2.063rem;
 `;
-export const ProductQuantity = styled.h3`
-  font-family: Roboto;
-  font-weight: normal;
+export const ProductQuantity = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  h4 {
+    font-family: Roboto;
+    font-weight: normal;
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid black;
+    font-family: Roboto;
+    font-size: 12px;
+    border-color: #5cb646;
+    border-radius: 8px 0px;
+    width: 90px;
+    height: 31px;
+    margin: 7px 0 0 8px;
+    padding: 8px 20.5px 9px 21.5px;
+  }
 `;
 export const ProductName = styled.h3`
   font-family: Roboto;
