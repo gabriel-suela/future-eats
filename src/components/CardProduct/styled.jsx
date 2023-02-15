@@ -3,15 +3,14 @@ import styled from "styled-components";
 export const ContainerCardProduct = styled.div`
   margin: 0.5rem 0;
   display: flex;
-  border: 1px solid grey;
+  border: 1px solid #b8b8b8;
   border-radius: 8px;
-  height: 7rem;
   align-items: center;
 `;
 export const ProductImage = styled.img`
   width: 96px;
-  height: 7rem;
-  margin-right: 16px;
+  height: 112px;
+  margin: 0 16px 0 0;
   border-radius: 8px 0 0 8px;
   object-fit: cover;
 `;
@@ -39,7 +38,7 @@ export const BoxNameQuantity = styled.div`
 export const ProductQuantity = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 12px;
   h4 {
     font-family: Roboto;
     font-weight: normal;

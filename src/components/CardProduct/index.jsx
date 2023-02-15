@@ -1,4 +1,5 @@
 import React from "react";
+import ModalQuantity from "../ModalSelectQuantity";
 import {
   BoxInform,
   ContainerCardProduct,
@@ -6,8 +7,10 @@ import {
   ProductName,
   ProductQuantity,
 } from "./styled";
+import { useState } from "react";
 
 const CardProduct = ({ product }) => {
+  const [showModal, setShowModal] = useState(false)
   return (
     <ContainerCardProduct>
       <ProductImage src={product.photoUrl} />
@@ -16,9 +19,10 @@ const CardProduct = ({ product }) => {
         <p>{product.description}</p>
         <ProductQuantity>
           <h4>R${product.price}</h4>
-          <button>Comprar</button>
+          <button onClick={()=>{setShowModal(true)}}>Comprar</button>
         </ProductQuantity>
       </BoxInform>
+      <ModalQuantity open={showModal} setOpen={setShowModal}/>
     </ContainerCardProduct>
   );
 };

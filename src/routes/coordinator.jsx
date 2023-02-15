@@ -26,3 +26,6 @@ export const goToProfile = (navigate) => {
     navigate('/profile')
 }
 
+export const goToLastPage = (navigate) => {
+    navigate(-1)
+}
