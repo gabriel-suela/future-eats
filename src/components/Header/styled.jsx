@@ -16,6 +16,7 @@ export const Title = styled.h1`
   font-family: Roboto;
   font-weight: normal;
   font-size: 1rem;
+  grid-column-start: 2;
 `;
 
 

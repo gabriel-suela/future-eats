@@ -33,7 +33,7 @@ const Restaurants = () => {
 
   return (
     <ContainerRestaurant>
-      <Header title={"Restaurante"}></Header>
+      <Header title={"Restaurante"} visibleArrow={true}></Header>
       <CardRestaurant>
         <CardRestaurantDetails restaurant={restaurant} />
         {restaurant.products &&
