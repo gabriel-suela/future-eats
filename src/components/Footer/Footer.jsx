@@ -2,36 +2,40 @@ import React from "react";
 import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
-import { FooterContainer, FooterIcons } from "./styled";
+import { Cart, FooterContainer, FooterIcons, Home, MenuContainerSpace, Profile } from "./styled";
 import { useNavigate } from "react-router-dom";
-import { goToCart, goToLogin, goToProfile } from "../../routes/coordinator";
+import { goToCart, goToFeed, goToLogin, goToProfile } from "../../routes/coordinator";
 
-const Footer = () => {
+const Footer = ({page}) => {
   const navigate = useNavigate();
 
   return (
     <FooterContainer>
       <FooterIcons>
-        <HomeIcon
+        <Home
+          currentPage={page === "home"}
           fontSize="large"
           onClick={() => {
-            goToLogin(navigate);
+            goToFeed(navigate);
           }}
         />
-        <ShoppingCartIcon
+        <Cart
+          currentPage={page === "cart"}
           fontSize="large"
           onClick={() => {
             goToCart(navigate);
           }}
         />
-        <PersonIcon
+        <Profile
+          currentPage={page === "profile"}
           fontSize="large"
           onClick={() => {
             goToProfile(navigate);
           }}
         />
       </FooterIcons>
-    </FooterContainer>
+      <MenuContainerSpace/>
+      </FooterContainer>
   );
 };
 

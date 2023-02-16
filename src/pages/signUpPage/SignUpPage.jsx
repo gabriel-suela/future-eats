@@ -7,6 +7,7 @@ import { ButtonStyled, DivPassword, Form, InputMaterial, Main } from "./styled";
 import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToSignUpAddress } from "../../routes/coordinator";
+import Header from "../../components/Header/Header";
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -67,6 +68,7 @@ const SignUp = () => {
 
   return (
     <Main>
+      <Header visibleArrow={true}/>
       <p>Cadastrar</p>
       <Form onSubmit={onSubmitForm}>
         <InputMaterial

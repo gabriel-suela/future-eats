@@ -20,7 +20,7 @@ const CardRestaurant = ({ restaurant }) => {
       <RestaurantName>{restaurant.name}</RestaurantName>
       <BoxInformTimePrice>
         <InformTimePrice>{restaurant.deliveryTime} min</InformTimePrice>
-        <InformTimePrice>Frete R${restaurant.shipping},00</InformTimePrice>
+        <InformTimePrice>Frete R$ {restaurant.shipping.toFixed(2).toString().replace(".", ",")}</InformTimePrice>
       </BoxInformTimePrice>
     </ContainerCardRestaurant>
   );

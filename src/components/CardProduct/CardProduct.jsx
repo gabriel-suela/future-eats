@@ -18,7 +18,7 @@ const CardProduct = ({ product }) => {
         <ProductName>{product.name}</ProductName>
         <p>{product.description}</p>
         <ProductQuantity>
-          <h4>R${product.price}</h4>
+          <h4>R$ {product.price.toFixed(2).toString().replace(".", ",")}</h4>
           <button
             onClick={() => {
               setShowModal(true);

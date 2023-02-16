@@ -1,24 +1,41 @@
 import styled from "styled-components";
+import HomeIcon from "@mui/icons-material/Home";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import PersonIcon from "@mui/icons-material/Person";
 
-export const FooterContainer = styled.footer`
-  display: flex;
-  justify-content: center;
+export const FooterContainer = styled.div`
+ 
+  
+`;
+
+export const FooterIcons = styled.nav`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  width: 100%;
-  height: 49px;
+  justify-items: center;
   position: fixed;
-  right: 0;
-  top: 800px;
+  bottom: 0;
   background-color: white;
-  box-shadow: 0px -6px 6px -10px rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 3.062rem;
+  color: lightgray;
 `;
 
-export const FooterIcons = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  color: #b8b8b8;
-  && :hover {
-    color: #5cb646;
+export const MenuContainerSpace = styled.div `
+  height: 3.062rem;
+`
+export const Profile = styled(PersonIcon)`
+  && {
+    color: ${(p) => p.currentPage ? "#5cb646" : ""}
   }
-`;
+`
+export const Cart = styled(ShoppingCartIcon)`
+  && {
+    color: ${(p) => p.currentPage ? "#5cb646" : ""}
+  }
+`
+export const Home = styled(HomeIcon)`
+  && {
+    color: ${(p) => p.currentPage ? "#5cb646" : ""}
+  }
+`

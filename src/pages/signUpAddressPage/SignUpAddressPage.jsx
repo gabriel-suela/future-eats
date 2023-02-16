@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header/Header";
 import { BASE_URL } from "../../constants/url";
 import { useForm } from "../../hooks/useForm";
 import { goToFeed } from "../../routes/coordinator";
@@ -39,6 +40,7 @@ const SignUpAddress = () => {
   };
   return (
     <Main>
+      <Header visibleArrow={true}/>
       <p>Meu endereço</p>
       <Form onSubmit={onSubmitForm}>
         <InputMaterial

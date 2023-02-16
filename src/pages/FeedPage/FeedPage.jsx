@@ -126,7 +126,7 @@ const Feed = () => {
         </Menu>
         {filterRestaurant}
       </CardsRestaurant>
-      <Footer></Footer>
+      <Footer page={"home"}></Footer>
     </ContainerFeed>
   );
 };

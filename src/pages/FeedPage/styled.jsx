@@ -26,4 +26,5 @@ export const MenuItem = styled.button`
   padding: 0 1rem;
   background: transparent;
   text-align: center;
+  color: ${(p)=> p.select ? "#5cb646": "black"}
 `;
