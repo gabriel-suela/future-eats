@@ -6,6 +6,7 @@ export const ContainerRestaurant = styled.div`
 `;
 
 export const CardRestaurant = styled.div`
+  width: 100%;
   padding: 0 1rem;
   border-radius: 10px;
 `;

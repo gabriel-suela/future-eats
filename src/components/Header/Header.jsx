@@ -1,22 +1,22 @@
+import { ArrowBackIosNew } from "@mui/icons-material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { goToLastPage } from "../../routes/coordinator";
-import { ArrowBack, ContainerHeader, Title } from "./styled";
+import { ContainerHeader, Title } from "./styled";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const Header = ({ title }) => {
   const navigate = useNavigate();
 
   return (
-    <>
-      <ArrowBack
+    <ContainerHeader>
+      <ArrowBackIosIcon
         onClick={() => {
           goToLastPage(navigate);
         }}
       />
-      <ContainerHeader>
-        <Title>{title}</Title>
-      </ContainerHeader>
-    </>
+      <Title>{title}</Title>
+    </ContainerHeader>
   );
 };
 

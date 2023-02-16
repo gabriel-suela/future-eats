@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ContainerFeed = styled.div`
-  padding: 0 1rem;
+  width: 100%;
+  height: 100vh;
 `;
 
 export const CardsRestaurant = styled.div`
@@ -13,7 +14,7 @@ export const Menu = styled.div`
   width: 100%;
   display: flex;
   overflow-y: scroll;
-  height: 2.625rem;
+  height: 2.62rem;
 `;
 
 export const MenuItem = styled.button`
@@ -25,5 +26,4 @@ export const MenuItem = styled.button`
   padding: 0 1rem;
   background: transparent;
   text-align: center;
-  color: ${(category) => (category.select ? "#5cb646" : "black")};
 `;
