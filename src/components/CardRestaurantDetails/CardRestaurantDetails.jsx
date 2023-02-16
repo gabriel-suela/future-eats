@@ -9,13 +9,13 @@ import {
   RestaurantName,
 } from "./styled";
 
-
-
 const CardRestaurantDetails = ({ restaurant }) => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <ContainerCardRestaurantDetails onClick={()=>goToRestaurants(navigate, restaurant.id)}>
+    <ContainerCardRestaurantDetails
+      onClick={() => goToRestaurants(navigate, restaurant.id)}
+    >
       <ImageRestaurant src={restaurant.logoUrl} />
       <RestaurantName>{restaurant.name}</RestaurantName>
       <Inform>{restaurant.category}</Inform>

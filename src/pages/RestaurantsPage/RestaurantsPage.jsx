@@ -5,7 +5,7 @@ import CardProduct from "../../components/CardProduct/CardProduct";
 import CardRestaurantDetails from "../../components/CardRestaurantDetails/CardRestaurantDetails";
 import { BASE_URL } from "../../constants/url";
 import { CardRestaurant, ContainerRestaurant } from "./styled";
-import Header from "../../components/Header/Header"
+import Header from "../../components/Header/Header";
 
 const Restaurants = () => {
   const [restaurant, setRestaurant] = useState({});
@@ -27,28 +27,25 @@ const Restaurants = () => {
       });
   };
 
-
   useEffect(() => {
     getRestaurants();
   }, []);
-
-  
 
   return (
     <ContainerRestaurant>
       <Header title={"Restaurante"}></Header>
       <CardRestaurant>
         <CardRestaurantDetails restaurant={restaurant} />
-        {
-            restaurant.products && restaurant.products.map((restaurant)=>{
-              console.log(restaurant);
-              return <CardProduct //key={product.id}
-               product={restaurant} />
-            })
-             
-        } 
+        {restaurant.products &&
+          restaurant.products.map((restaurant) => {
+            console.log(restaurant);
+            return (
+              <CardProduct //key={product.id}
+                product={restaurant}
+              />
+            );
+          })}
       </CardRestaurant>
-      
     </ContainerRestaurant>
   );
 };

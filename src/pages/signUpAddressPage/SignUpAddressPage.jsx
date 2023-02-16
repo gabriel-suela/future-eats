@@ -3,46 +3,41 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants/url";
 import { useForm } from "../../hooks/useForm";
-import { goToFeed, } from "../../routes/coordinator";
+import { goToFeed } from "../../routes/coordinator";
 import { ButtonStyled, Form, InputMaterial, Main } from "./styled";
 
-
 const SignUpAddress = () => {
+  const { form, onChange, clear } = useForm({
+    street: "",
+    number: "",
+    neighbourhood: "",
+    city: "",
+    state: "",
+    complement: "",
+  });
 
-    const {form, onChange, clear} = useForm({
-        street: "",
-        number:"",
-        neighbourhood:"",
-        city:"",
-        state:"",
-        complement:""
-    })
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
-
-    
-    const addAddress = async() => {
-      const token = localStorage.getItem('token')
-      await axios.put(`${BASE_URL}/address`, form,{headers:
-        {auth: token}})
-      .then((res)=>{
-        localStorage.setItem('token', res.data.token)
-        alert('Endereço cadastrado com sucesso')
-        clear()
+  const addAddress = async () => {
+    const token = localStorage.getItem("token");
+    await axios
+      .put(`${BASE_URL}/address`, form, { headers: { auth: token } })
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        alert("Endereço cadastrado com sucesso");
+        clear();
       })
-      .catch((err)=>{
-        
-        alert(`${err.response.data.message}`)
-      })
-    }
+      .catch((err) => {
+        alert(`${err.response.data.message}`);
+      });
+  };
 
-
-    const onSubmitForm = (e) => {
-      e.preventDefault()
-      addAddress()
-      goToFeed(navigate)
-  }
-    return(
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    addAddress();
+    goToFeed(navigate);
+  };
+  return (
     <Main>
       <p>Meu endereço</p>
       <Form onSubmit={onSubmitForm}>
@@ -89,7 +84,7 @@ const SignUpAddress = () => {
           value={form.neighbourhood}
           onChange={onChange}
         />
-        
+
         <InputMaterial
           id="outlined-basic"
           label={"Cidade"}
@@ -100,7 +95,7 @@ const SignUpAddress = () => {
           value={form.city}
           onChange={onChange}
         />
-        
+
         <InputMaterial
           id="outlined-basic"
           label={"Estado"}
@@ -111,10 +106,10 @@ const SignUpAddress = () => {
           value={form.state}
           onChange={onChange}
         />
-        <ButtonStyled type="submit">Confirmar</ButtonStyled> 
-        </Form>
-        </Main>
-    )
-}
+        <ButtonStyled type="submit">Confirmar</ButtonStyled>
+      </Form>
+    </Main>
+  );
+};
 
-export default SignUpAddress
+export default SignUpAddress;

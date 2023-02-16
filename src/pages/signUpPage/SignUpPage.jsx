@@ -54,17 +54,17 @@ const SignUp = () => {
     await axios
       .post(`${BASE_URL}/signup`, form)
       .then((res) => {
-        localStorage.setItem('token', res.data.token)
+        localStorage.setItem("token", res.data.token);
         alert("Usuário Cadastrado com sucesso!!");
         clean();
         setConfirmPassword("");
-        console.log(res.data)
+        console.log(res.data);
       })
       .catch((err) => {
         alert(`${err.response.data.message}`);
       });
   };
-  
+
   return (
     <Main>
       <p>Cadastrar</p>
