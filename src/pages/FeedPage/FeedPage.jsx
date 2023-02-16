@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { InputAdornment, InputBase } from "@mui/material";
-import CardRestaurant from "../../components/CardRestaurant";
-import Header from "../../components/Header";
+import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
+import Header from "../../components/Header/Header";
 import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { CardsRestaurant, ContainerFeed, Menu, MenuItem } from "./styled";
 import SearchIcon from "@mui/icons-material/Search";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/Footer";
 
 const Feed = () => {
   const [restaurants, setRestaurants] = useState([]);

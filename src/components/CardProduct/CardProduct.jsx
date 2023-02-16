@@ -1,5 +1,5 @@
 import React from "react";
-import ModalQuantity from "../ModalSelectQuantity";
+import ModalQuantity from "../ModalSelectQuantity/ModalSelectQuantity";
 import {
   BoxInform,
   ContainerCardProduct,

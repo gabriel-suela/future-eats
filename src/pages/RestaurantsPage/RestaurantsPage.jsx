@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardProduct from "../../components/CardProduct";
-import CardRestaurantDetails from "../../components/CardRestaurantDetails";
+import CardProduct from "../../components/CardProduct/CardProduct";
+import CardRestaurantDetails from "../../components/CardRestaurantDetails/CardRestaurantDetails";
 import { BASE_URL } from "../../constants/url";
 import { CardRestaurant, ContainerRestaurant } from "./styled";
-import Header from "../../components/Header"
+import Header from "../../components/Header/Header"
 
 const Restaurants = () => {
   const [restaurant, setRestaurant] = useState({});
