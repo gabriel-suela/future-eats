@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   margin: 0.5rem 0;
   display: flex;
-  border: 1px solid #b8b8b8;
+  border: 1px solid var(--greyish);
   border-radius: 8px;
   align-items: center;
 
@@ -17,7 +17,7 @@ export const Container = styled.div`
 
   h3 {
     font-size: 1rem;
-    color: #5cb646;
+    color: var(--mid-green);
     font-weight: normal;
   }
 `;
@@ -53,7 +53,7 @@ export const ProductQuantity = styled.div`
     background: transparent;
     border: 1px solid black;
     font-size: 12px;
-    border-color: #5cb646;
+    border-color: var(--mid-green);
     border-radius: 8px 0px;
     width: 90px;
     height: 31px;

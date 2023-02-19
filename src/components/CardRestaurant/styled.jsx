@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   margin: 0.5rem 0;
-  border: 1px solid #b8b8b8;
+  border: 1px solid var(--greyish);
   border-radius: 8px;
   padding: 0.3rem;
 
@@ -21,7 +21,7 @@ export const Container = styled.div`
     font-style: normal;
     line-height: normal;
     letter-spacing: -0.39px;
-    color: #5cb646;
+    color: var(--mid-green);
     margin: 12px 16px 4px;
   }
 
@@ -32,7 +32,7 @@ export const Container = styled.div`
     font-style: normal;
     line-height: normal;
     letter-spacing: -0.39px;
-    color: #b8b8b8;
+    color: var(--greyish);
     margin: 4px 8px 0 16px;
   }
 `;

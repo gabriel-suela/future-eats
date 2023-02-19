@@ -35,7 +35,7 @@ export const ButtonStyled = styled(Button)`
     padding: 12px 16px;
     border-radius: 2px;
     color: black;
-    background-color: #5cb646;
+    background-color:var(--mid-green);
     width: 100%;
   }
 `;
