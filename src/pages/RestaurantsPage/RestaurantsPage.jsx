@@ -6,10 +6,16 @@ import CardRestaurantDetails from "../../components/CardRestaurantDetails/CardRe
 import { BASE_URL } from "../../constants/url";
 import { CardRestaurant, Container } from "./styled";
 import Header from "../../components/Header/Header";
+import { useRequestData } from "../../hooks/useRequestData";
+import Loading from "../../components/Loading/Loading";
 
 const Restaurants = () => {
   const [restaurant, setRestaurant] = useState({});
   const { restaurantId } = useParams();
+  const [isLoading] = useRequestData(
+    `${BASE_URL}/restaurants`,
+    localStorage.getItem("token")
+  );
 
   const getRestaurants = async () => {
     const token = localStorage.getItem("token");
@@ -33,19 +39,24 @@ const Restaurants = () => {
 
   return (
     <Container>
-      <Header title={"Restaurante"} visibleArrow={true}></Header>
-      <CardRestaurant>
-        <CardRestaurantDetails restaurant={restaurant} />
-        {restaurant.products &&
-          restaurant.products.map((restaurant) => {
-            console.log(restaurant);
-            return (
-              <CardProduct //key={product.id}
-                product={restaurant}
-              />
-            );
-          })}
-      </CardRestaurant>
+      {!isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Header title={"Restaurante"} visibleArrow={true}></Header>
+          <CardRestaurant>
+            <CardRestaurantDetails restaurant={restaurant} />
+            {restaurant.products &&
+              restaurant.products.map((restaurant) => {
+                return (
+                  <CardProduct key={restaurant.id}
+                    product={restaurant}
+                  />
+                );
+              })}
+          </CardRestaurant>
+        </>
+      )}
     </Container>
   );
 };
