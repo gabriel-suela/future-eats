@@ -26,13 +26,9 @@
 <h2 id="imagens">📱 Imagens do site</h2>
 
 <img align="left" width="292" alt="image" src="https://user-images.githubusercontent.com/96388423/219977536-1974394d-f297-42da-b855-da3183f4e65c.png">
-<img align="left" width="293" alt="image" src="https://user-images.githubusercontent.com/96388423/219977546-25e87db9-7bed-4e46-9c6b-b107a7aab781.png">
-<img width="292" alt="image" src="https://user-images.githubusercontent.com/96388423/219977570-8ce65231-a769-4413-968d-5aed408ea1c6.png">
-
-
 <img align="left" width="293" alt="feed" src="https://user-images.githubusercontent.com/96388423/219976968-6f057536-aa41-40cc-8c7f-b5c65ceb3356.png">
-<img  align="left"width="291" alt="image" src="https://user-images.githubusercontent.com/96388423/219976999-b0761077-bc0e-4c6a-9916-ada6a508a263.png">
-<img width="290" alt="image" src="https://user-images.githubusercontent.com/96388423/219977017-d9955343-4caf-40b8-9e40-911c00706348.png">
+<img width="291" alt="image" src="https://user-images.githubusercontent.com/96388423/219976999-b0761077-bc0e-4c6a-9916-ada6a508a263.png">
+
 
 
 
