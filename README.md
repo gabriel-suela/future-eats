@@ -42,7 +42,7 @@
 <p>🔎 Busca e seleção de restaurantes ✔️</p>
 <p>🗒️ Cardápio do restaurante ✔️</p>
 <p>🛒 Carrinho e finalizar compra ✖️</p>
-<p>✏️ Perfil, editar perfil e histórico de pedidos ✖️</p>
+<p>✏️ Perfil, editar perfil e histórico de pedidos ✔️</p>
 
 
  
