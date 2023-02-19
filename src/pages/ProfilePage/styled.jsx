@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
   display: flex;
   flex-direction: column;
 `;
@@ -16,9 +15,6 @@ export const ProfileInfo = styled.div`
   display: flex;
   padding: 20px;
   justify-content: space-between;
-
-
-
   p {
     margin-bottom: 5px;
   }
@@ -46,6 +42,5 @@ export const History = styled.div`
  
   p{
     padding: 5px;
-    border-bottom: 1px solid black;
   }
 `;

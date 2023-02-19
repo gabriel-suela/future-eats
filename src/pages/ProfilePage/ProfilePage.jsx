@@ -6,6 +6,7 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 import { useRequestData } from "../../hooks/useRequestData";
 import { Address, Container, History, ProfileInfo } from "./styled";
 import EditIcon from '@mui/icons-material/Edit';
+import OrderHistory from "../../components/OrderHistory/OrderHistory";
 
 const ProfilePage = () => {
   useProtectedPage();
@@ -45,6 +46,7 @@ const ProfilePage = () => {
 
       <History>
         <p>Histórico de pedidos</p>
+        <OrderHistory/>
       </History>
 
       <Footer page={"profile"} />
