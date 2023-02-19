@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import CardProduct from "../../components/CardProduct/CardProduct";
 import CardRestaurantDetails from "../../components/CardRestaurantDetails/CardRestaurantDetails";
 import { BASE_URL } from "../../constants/url";
-import { CardRestaurant, ContainerRestaurant } from "./styled";
+import { CardRestaurant, Container, ContainerRestaurant } from "./styled";
 import Header from "../../components/Header/Header";
 
 const Restaurants = () => {
@@ -32,7 +32,7 @@ const Restaurants = () => {
   }, []);
 
   return (
-    <ContainerRestaurant>
+    <Container>
       <Header title={"Restaurante"} visibleArrow={true}></Header>
       <CardRestaurant>
         <CardRestaurantDetails restaurant={restaurant} />
@@ -46,7 +46,7 @@ const Restaurants = () => {
             );
           })}
       </CardRestaurant>
-    </ContainerRestaurant>
+    </Container>
   );
 };
 

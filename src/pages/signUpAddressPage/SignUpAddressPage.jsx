@@ -39,8 +39,8 @@ const SignUpAddress = () => {
     goToFeed(navigate);
   };
   return (
-    <Main>
-      <Header visibleArrow={true}/>
+    <Container>
+      <Header visibleArrow={true} />
       <p>Meu endereço</p>
       <Form onSubmit={onSubmitForm}>
         <InputMaterial
@@ -110,7 +110,7 @@ const SignUpAddress = () => {
         />
         <ButtonStyled type="submit">Confirmar</ButtonStyled>
       </Form>
-    </Main>
+    </Container>
   );
 };
 

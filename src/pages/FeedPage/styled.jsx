@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerFeed = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 100vh;
 `;
@@ -18,7 +18,6 @@ export const Menu = styled.div`
 `;
 
 export const MenuItem = styled.button`
-  font-family: Roboto;
   font-weight: normal;
   font-size: 1rem;
   border: none;
@@ -26,5 +25,5 @@ export const MenuItem = styled.button`
   padding: 0 1rem;
   background: transparent;
   text-align: center;
-  color: ${(p)=> p.select ? "#5cb646": "black"}
+  color: ${props => props.selected ? "#5cb646": "black"}
 `;

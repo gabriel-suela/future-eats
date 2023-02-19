@@ -72,7 +72,6 @@ export const DivButton = styled.div`
     height: 42px;
     border: 0;
     background: white;
-    font-family: Roboto;
     font-size: 16px;
     letter-spacing: -0.39px;
     margin-top: 28px;

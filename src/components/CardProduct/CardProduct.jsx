@@ -2,9 +2,7 @@ import React from "react";
 import ModalQuantity from "../ModalSelectQuantity/ModalSelectQuantity";
 import {
   BoxInform,
-  ContainerCardProduct,
-  ProductImage,
-  ProductName,
+  Container,
   ProductQuantity,
 } from "./styled";
 import { useState } from "react";
@@ -12,10 +10,10 @@ import { useState } from "react";
 const CardProduct = ({ product }) => {
   const [showModal, setShowModal] = useState(false);
   return (
-    <ContainerCardProduct>
-      <ProductImage src={product.photoUrl} />
+    <Container>
+      <img src={product.photoUrl} />
       <BoxInform>
-        <ProductName>{product.name}</ProductName>
+        <h3>{product.name}</h3>
         <p>{product.description}</p>
         <ProductQuantity>
           <h4>R$ {product.price.toFixed(2).toString().replace(".", ",")}</h4>
@@ -29,7 +27,7 @@ const CardProduct = ({ product }) => {
         </ProductQuantity>
       </BoxInform>
       <ModalQuantity open={showModal} setOpen={setShowModal} />
-    </ContainerCardProduct>
+    </Container>
   );
 };
 

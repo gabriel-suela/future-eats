@@ -3,7 +3,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PersonIcon from "@mui/icons-material/Person";
 
-export const FooterContainer = styled.div`
+export const Container = styled.div`
  
   
 `;

@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import { useRequestData } from "../../hooks/useRequestData";
 import { CartConfig, CartInform, InfoProfile, Main, MainCart } from "./styled";
-import { GlobalContext } from "../../context/GlobalContext";
+
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 

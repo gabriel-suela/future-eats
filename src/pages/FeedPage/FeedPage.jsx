@@ -5,7 +5,13 @@ import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 import Header from "../../components/Header/Header";
 import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import { CardsRestaurant, ContainerFeed, Menu, MenuItem } from "./styled";
+import {
+  CardsRestaurant,
+  Container,
+  ContainerFeed,
+  Menu,
+  MenuItem,
+} from "./styled";
 import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/Footer/Footer";
 
@@ -92,7 +98,7 @@ const Feed = () => {
   };
 
   return (
-    <ContainerFeed>
+    <Container>
       <Header title={"Future Eats"}></Header>
       <CardsRestaurant>
         {
@@ -114,7 +120,7 @@ const Feed = () => {
             return (
               <MenuItem
                 key={item}
-                select={category.select}
+                selected={category.select}
                 onClick={() => {
                   changeCategory(category.category);
                 }}
@@ -127,7 +133,7 @@ const Feed = () => {
         {filterRestaurant}
       </CardsRestaurant>
       <Footer page={"home"}></Footer>
-    </ContainerFeed>
+    </Container>
   );
 };
 

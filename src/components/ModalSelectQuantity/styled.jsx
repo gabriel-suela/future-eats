@@ -22,7 +22,6 @@ export const QuantitySelect = styled.select`
 
 export const AddToCartBtn = styled.button`
   font-size: 1rem;
-  font-family: Roboto;
   font-weight: normal;
   text-align: right;
   color: #5cb646;

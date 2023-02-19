@@ -1,30 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { goToRestaurants } from "../../routes/coordinator";
-import {
-  BoxInformTimePrice,
-  ContainerCardRestaurantDetails,
-  ImageRestaurant,
-  Inform,
-  RestaurantName,
-} from "./styled";
+import { BoxInformTimePrice, Container } from "./styled";
 
 const CardRestaurantDetails = ({ restaurant }) => {
   const navigate = useNavigate();
 
   return (
-    <ContainerCardRestaurantDetails
-      onClick={() => goToRestaurants(navigate, restaurant.id)}
-    >
-      <ImageRestaurant src={restaurant.logoUrl} />
-      <RestaurantName>{restaurant.name}</RestaurantName>
-      <Inform>{restaurant.category}</Inform>
+    <Container onClick={() => goToRestaurants(navigate, restaurant.id)}>
+      <img src={restaurant.logoUrl} />
+      <h3>{restaurant.name}</h3>
+      <p>{restaurant.category}</p>
       <BoxInformTimePrice>
-        <Inform>{restaurant.deliveryTime} min</Inform>
-        <Inform>Frete R${restaurant.shipping},00</Inform>
+        <p>{restaurant.deliveryTime} min</p>
+        <p>Frete R${restaurant.shipping},00</p>
       </BoxInformTimePrice>
-      <Inform>{restaurant.address}</Inform>
-    </ContainerCardRestaurantDetails>
+      <p>{restaurant.address}</p>
+    </Container>
   );
 };
 

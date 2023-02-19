@@ -1,28 +1,22 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { goToRestaurants } from "../../routes/coordinator";
-import {
-  BoxInformTimePrice,
-  ContainerCardRestaurant,
-  ImageRestaurant,
-  InformTimePrice,
-  RestaurantName,
-} from "./styled";
+import { Container, BoxInformTimePrice } from "./styled";
 
 const CardRestaurant = ({ restaurant }) => {
   const navigate = useNavigate();
 
   return (
-    <ContainerCardRestaurant
-      onClick={() => goToRestaurants(navigate, restaurant.id)}
-    >
-      <ImageRestaurant src={restaurant.logoUrl} />
-      <RestaurantName>{restaurant.name}</RestaurantName>
+    <Container onClick={() => goToRestaurants(navigate, restaurant.id)}>
+      <img src={restaurant.logoUrl} />
+      <h3>{restaurant.name}</h3>
       <BoxInformTimePrice>
-        <InformTimePrice>{restaurant.deliveryTime} min</InformTimePrice>
-        <InformTimePrice>Frete R$ {restaurant.shipping.toFixed(2).toString().replace(".", ",")}</InformTimePrice>
+        <p>{restaurant.deliveryTime} min</p>
+        <p>
+          Frete R$ {restaurant.shipping.toFixed(2).toString().replace(".", ",")}
+        </p>
       </BoxInformTimePrice>
-    </ContainerCardRestaurant>
+    </Container>
   );
 };
 

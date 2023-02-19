@@ -1,18 +1,25 @@
 import styled from "styled-components";
 
-export const ContainerCardProduct = styled.div`
+export const Container = styled.div`
   margin: 0.5rem 0;
   display: flex;
   border: 1px solid #b8b8b8;
   border-radius: 8px;
   align-items: center;
-`;
-export const ProductImage = styled.img`
-  width: 96px;
-  height: 112px;
-  margin: 0 16px 0 0;
-  border-radius: 8px 0 0 8px;
-  object-fit: cover;
+
+  img {
+    width: 96px;
+    height: 112px;
+    margin: 0 16px 0 0;
+    border-radius: 8px 0 0 8px;
+    object-fit: cover;
+  }
+
+  h3 {
+    font-size: 1rem;
+    color: #5cb646;
+    font-weight: normal;
+  }
 `;
 
 export const BoxInform = styled.div`
@@ -23,7 +30,6 @@ export const BoxInform = styled.div`
     font-size: 12px;
     color: grey;
     margin: 8px 0;
-    font-family: Roboto;
   }
 `;
 
@@ -40,14 +46,12 @@ export const ProductQuantity = styled.div`
   justify-content: space-between;
   margin-top: 12px;
   h4 {
-    font-family: Roboto;
     font-weight: normal;
   }
 
   button {
     background: transparent;
     border: 1px solid black;
-    font-family: Roboto;
     font-size: 12px;
     border-color: #5cb646;
     border-radius: 8px 0px;
@@ -57,14 +61,7 @@ export const ProductQuantity = styled.div`
     padding: 8px 20.5px 9px 21.5px;
   }
 `;
-export const ProductName = styled.h3`
-  font-family: Roboto;
-  font-size: 1rem;
-  color: #5cb646;
-  font-weight: normal;
-`;
 
-export const PriceInfo = styled.p``;
 export const ButtonInfo = styled.button`
   width: 5rem;
   height: 2rem;

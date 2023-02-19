@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerHeader = styled.header`
+export const Container = styled.header`
   width: 100%;
   height: 2.75rem;
   display: grid;
@@ -13,7 +13,6 @@ export const ContainerHeader = styled.header`
 `;
 
 export const Title = styled.h1`
-  font-family: Roboto;
   font-weight: normal;
   font-size: 1rem;
   grid-column-start: 2;
