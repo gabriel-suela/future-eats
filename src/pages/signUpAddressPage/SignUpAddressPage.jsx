@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import { BASE_URL } from "../../constants/url";
 import { useForm } from "../../hooks/useForm";
 import { goToFeed } from "../../routes/coordinator";
-import { ButtonStyled, Form, InputMaterial, Main } from "./styled";
+import { ButtonStyled, Form, InputMaterial, Container } from "./styled";
 
 const SignUpAddress = () => {
   const { form, onChange, clear } = useForm({

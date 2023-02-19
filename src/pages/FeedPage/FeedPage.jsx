@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { InputAdornment, InputBase } from "@mui/material";
+import { CircularProgress, InputAdornment, InputBase } from "@mui/material";
 import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 import Header from "../../components/Header/Header";
 import { BASE_URL } from "../../constants/url";
@@ -8,12 +8,14 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 import {
   CardsRestaurant,
   Container,
-  ContainerFeed,
   Menu,
   MenuItem,
 } from "./styled";
 import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/Footer/Footer";
+import { useRequestData } from "../../hooks/useRequestData";
+import { Box } from "@mui/system";
+import Loading from "../../components/Loading/Loading";
 
 const Feed = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -21,6 +23,7 @@ const Feed = () => {
   const [categoryRestaurant, setCategoryRestaurant] = useState([]);
   const [valueCategory, setValueCategory] = useState("");
   const [isActive, setIsActive] = useState(false);
+  const [isLoading] = useRequestData(`${BASE_URL}/restaurants`, localStorage.getItem("token"))
 
   useProtectedPage();
   const getRestaurants = async () => {
@@ -80,27 +83,33 @@ const Feed = () => {
 
   const changeCategory = (category) => {
     setValueCategory(category);
+    
 
-    const result = categoryRestaurant.map((cat) => {
-      if (cat.category === cat) {
+    const result = categoryRestaurant.map((category) => {
+      if (category.category === category) {
         return {
-          ...cat,
+          ...category,
           select: true,
         };
       } else {
         return {
-          ...cat,
+          ...category,
           select: false,
         };
       }
     });
     setCategoryRestaurant(result);
   };
+  
 
   return (
+    
     <Container>
       <Header title={"Future Eats"}></Header>
-      <CardsRestaurant>
+      {!isLoading ? 
+        <Loading/> : (
+        <>
+        <CardsRestaurant>
         {
           <InputBase
             value={inputText}
@@ -120,7 +129,7 @@ const Feed = () => {
             return (
               <MenuItem
                 key={item}
-                selected={category.select}
+                categoryChoice={category.select}
                 onClick={() => {
                   changeCategory(category.category);
                 }}
@@ -132,6 +141,9 @@ const Feed = () => {
         </Menu>
         {filterRestaurant}
       </CardsRestaurant>
+        </>
+      )}
+      
       <Footer page={"home"}></Footer>
     </Container>
   );

@@ -25,5 +25,5 @@ export const MenuItem = styled.button`
   padding: 0 1rem;
   background: transparent;
   text-align: center;
-  color: ${props => props.selected ? "#5cb646": "black"}
+  color: ${props => props.categoryChoice ? "#5cb646": "black"}
 `;

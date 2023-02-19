@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import CardProduct from "../../components/CardProduct/CardProduct";
 import CardRestaurantDetails from "../../components/CardRestaurantDetails/CardRestaurantDetails";
 import { BASE_URL } from "../../constants/url";
-import { CardRestaurant, Container, ContainerRestaurant } from "./styled";
+import { CardRestaurant, Container } from "./styled";
 import Header from "../../components/Header/Header";
 
 const Restaurants = () => {
