@@ -26,6 +26,14 @@
 <h2 id="imagens">📱 Imagens do site</h2>
 
 
+<img width="293" alt="feed" src="https://user-images.githubusercontent.com/96388423/219976968-6f057536-aa41-40cc-8c7f-b5c65ceb3356.png">
+<img width="291" alt="image" src="https://user-images.githubusercontent.com/96388423/219976999-b0761077-bc0e-4c6a-9916-ada6a508a263.png">
+<img width="290" alt="image" src="https://user-images.githubusercontent.com/96388423/219977017-d9955343-4caf-40b8-9e40-911c00706348.png">
+
+
+
+
+
 
 
 <h2 id="features">✔️ Features</h2>
