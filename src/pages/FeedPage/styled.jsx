@@ -10,11 +10,11 @@ export const CardsRestaurant = styled.div`
   border-radius: 10px;
 `;
 
-export const Menu = styled.div`
+export const Menu = styled.nav`
   width: 100%;
   display: flex;
-  overflow-y: scroll;
   height: 2.62rem;
+  overflow: auto;
 `;
 
 export const MenuItem = styled.button`
@@ -25,5 +25,8 @@ export const MenuItem = styled.button`
   padding: 0 1rem;
   background: transparent;
   text-align: center;
-  color: ${props => props.categoryChoice ? "var(--mid-green)": "black"}
+  color: black;
+  &:hover{
+    color: var(--mid-green);
+  }
 `;

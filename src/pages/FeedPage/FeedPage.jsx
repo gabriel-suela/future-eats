@@ -1,20 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { CircularProgress, InputAdornment, InputBase } from "@mui/material";
+import { InputAdornment, InputBase } from "@mui/material";
 import CardRestaurant from "../../components/CardRestaurant/CardRestaurant";
 import Header from "../../components/Header/Header";
 import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import {
-  CardsRestaurant,
-  Container,
-  Menu,
-  MenuItem,
-} from "./styled";
+import { CardsRestaurant, Container, Menu, MenuItem } from "./styled";
 import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/Footer/Footer";
 import { useRequestData } from "../../hooks/useRequestData";
-import { Box } from "@mui/system";
 import Loading from "../../components/Loading/Loading";
 
 const Feed = () => {
@@ -23,7 +17,10 @@ const Feed = () => {
   const [categoryRestaurant, setCategoryRestaurant] = useState([]);
   const [valueCategory, setValueCategory] = useState("");
   const [isActive, setIsActive] = useState(false);
-  const [isLoading] = useRequestData(`${BASE_URL}/restaurants`, localStorage.getItem("token"))
+  const [isLoading] = useRequestData(
+    `${BASE_URL}/restaurants`,
+    localStorage.getItem("token")
+  );
 
   useProtectedPage();
   const getRestaurants = async () => {
@@ -83,7 +80,6 @@ const Feed = () => {
 
   const changeCategory = (category) => {
     setValueCategory(category);
-    
 
     const result = categoryRestaurant.map((category) => {
       if (category.category === category) {
@@ -100,50 +96,48 @@ const Feed = () => {
     });
     setCategoryRestaurant(result);
   };
-  
 
   return (
-    
     <Container>
       <Header title={"Future Eats"}></Header>
-      {!isLoading ? 
-        <Loading/> : (
+      {!isLoading ? (
+        <Loading />
+      ) : (
         <>
-        <CardsRestaurant>
-        {
-          <InputBase
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Restaurantes"
-            inputProps={{ "aria-label": "search google maps" }}
-            startAdornment={
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
+          <CardsRestaurant>
+            {
+              <InputBase
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                placeholder="Restaurantes"
+                inputProps={{ "aria-label": "search google maps" }}
+                startAdornment={
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                }
+              />
             }
-          />
-        }
-        <Menu>
-          <MenuItem onClick={() => setValueCategory("")}>Todos</MenuItem>
-          {categoryRestaurant.map((category, item) => {
-            return (
-              <MenuItem
-                key={item}
-                categoryChoice={category.select}
-                onClick={() => {
-                  changeCategory(category.category);
-                }}
-              >
-                {category.category}
-              </MenuItem>
-            );
-          })}
-        </Menu>
-        {filterRestaurant}
-      </CardsRestaurant>
+            <Menu>
+              <MenuItem onClick={() => setValueCategory("")}>Todos</MenuItem>
+              {categoryRestaurant.map((category, item) => {
+                return (
+                  <MenuItem
+                    key={item}
+                    onClick={() => {
+                      changeCategory(category.category);
+                    }}
+                  >
+                    {category.category}
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+            {filterRestaurant}
+          </CardsRestaurant>
         </>
       )}
-      
+
       <Footer page={"home"}></Footer>
     </Container>
   );

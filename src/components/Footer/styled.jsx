@@ -26,16 +26,16 @@ export const MenuContainerSpace = styled.div `
 `
 export const Profile = styled(PersonIcon)`
   && {
-    color: ${(p) => p.currentpage ? "var(--mid-green);" : ""}
+    color: ${(p) => p.$currentpage ? "var(--mid-green);" : ""}
   }
 `
 export const Cart = styled(ShoppingCartIcon)`
   && {
-    color: ${(p) => p.currentpage ? "var(--mid-green);" : ""}
+    color: ${(p) => p.$currentpage ? "var(--mid-green);" : ""}
   }
 `
 export const Home = styled(HomeIcon)`
   && {
-    color: ${(p) => p.currentpage ? "var(--mid-green);" : ""}
+    color: ${(p) => p.$currentpage ? "var(--mid-green);" : ""}
   }
 `
