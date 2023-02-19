@@ -1,9 +1,9 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { IconButton, InputAdornment } from "@mui/material";
+import { IconButton } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import { ButtonStyled, DivPassword, Form, InputMaterial, Main } from "./styled";
+import { ButtonStyled, Container, DivPassword, Form, InputMaterial } from "./styled";
 import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToSignUpAddress } from "../../routes/coordinator";
@@ -20,6 +20,7 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [checkErrPass, setCheckErrPass] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -67,12 +68,12 @@ const SignUp = () => {
   };
 
   return (
-    <Main>
+    <Container>
       <Header visibleArrow={true}/>
       <p>Cadastrar</p>
       <Form onSubmit={onSubmitForm}>
         <InputMaterial
-          id="outlined-basic"
+          id="name"
           label={"Nome"}
           name="name"
           type={"text"}
@@ -83,7 +84,7 @@ const SignUp = () => {
         />
 
         <InputMaterial
-          id="outlined-basic"
+          id="email"
           label={"Email"}
           name="email"
           type={"email"}
@@ -94,7 +95,7 @@ const SignUp = () => {
         />
 
         <InputMaterial
-          id="outlined-basic"
+          id="cpf"
           label={"CPF"}
           name="cpf"
           type={"text"}
@@ -155,7 +156,7 @@ const SignUp = () => {
         </DivPassword>
         <ButtonStyled type={"submit"}>Confirmar</ButtonStyled>
       </Form>
-    </Main>
+    </Container>
   );
 };
 
