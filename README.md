@@ -10,7 +10,7 @@
 <a href="#desenvolvedores">Desenvolvedores</a> |
 </p>
 
-<h1 id="sobre">🍴 Projeto final do front-end labenu: FourFood</h1>
+<h1 id="sobre">🍴 Projeto final do front-end labenu: FutureEats [WIP]</h1>
 
 <p>FutureEats é uma aplicação para mobile inspirada no aplicativo iFood, uma plataforma de entrega de pedidos de comida, que conecta restaurantes e consumidores.</p>
 
@@ -21,7 +21,7 @@
 
 <h2 id="link">🔗 Link surge: Link para visualização do site</h2>
 
-<a href="#">FourFood</a>
+<a href="#">FutureEats</a>
 
 <h2 id="imagens">📱 Imagens do site</h2>
 
@@ -33,8 +33,8 @@
 <p>👤 Login/Cadastro ✔️</p>
 <p>🔎 Busca e seleção de restaurantes ✔️</p>
 <p>🗒️ Cardápio do restaurante ✔️</p>
-<p>🛒 Carrinho e finalizar compra ✔️</p>
-<p>✏️ Perfil, editar perfil e histórico de pedidos ✔️</p>
+<p>🛒 Carrinho e finalizar compra ✖️</p>
+<p>✏️ Perfil, editar perfil e histórico de pedidos ✖️</p>
 
 
  
@@ -45,6 +45,8 @@
 - 💅 [Styled-Components](https://styled-components.com/docs)
 
 - 💎 [MUI - Material UI]  
+
+- ⚛️ [Axios]
 
 <h2 id="desenvolvedores">👨‍💻 Desenvolvedores</h2>
 <table>         
