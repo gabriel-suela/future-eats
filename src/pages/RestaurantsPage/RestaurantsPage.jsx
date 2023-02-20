@@ -8,8 +8,11 @@ import { CardRestaurant, Container } from "./styled";
 import Header from "../../components/Header/Header";
 import { useRequestData } from "../../hooks/useRequestData";
 import Loading from "../../components/Loading/Loading";
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const Restaurants = () => {
+  useProtectedPage()
+
   const [restaurant, setRestaurant] = useState({});
   const { restaurantId } = useParams();
   const [isLoading] = useRequestData(

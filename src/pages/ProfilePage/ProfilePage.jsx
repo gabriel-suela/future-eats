@@ -5,7 +5,7 @@ import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useRequestData } from "../../hooks/useRequestData";
 import { Address, Container, History, ProfileInfo } from "./styled";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import OrderHistory from "../../components/OrderHistory/OrderHistory";
 
 const ProfilePage = () => {
@@ -23,7 +23,7 @@ const ProfilePage = () => {
         <p>{data.user.email}</p>
         <p>{data.user.cpf}</p>
       </div>
-      <EditIcon/>
+      <EditIcon />
     </ProfileInfo>
   );
 
@@ -33,7 +33,7 @@ const ProfilePage = () => {
         <h4>Endereço cadastrado</h4>
         <p>{data.user.address}</p>
       </div>
-      <EditIcon/>
+      <EditIcon />
     </Address>
   );
 
@@ -46,7 +46,7 @@ const ProfilePage = () => {
 
       <History>
         <p>Histórico de pedidos</p>
-        <OrderHistory/>
+        <OrderHistory />
       </History>
 
       <Footer page={"profile"} />

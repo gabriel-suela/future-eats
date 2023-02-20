@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import { BASE_URL } from "../../constants/url";
@@ -19,17 +19,19 @@ const SignUpAddress = () => {
 
   const navigate = useNavigate();
 
-  const addAddress = async () => {
+  const addAddress = () => {
     const token = localStorage.getItem("token");
-    await axios
+    axios
       .put(`${BASE_URL}/address`, form, { headers: { auth: token } })
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         alert("Endereço cadastrado com sucesso");
         clear();
+        console.log(form);
       })
       .catch((err) => {
         alert(`${err.response.data.message}`);
+        console.log(err.response.data.message);
       });
   };
 
@@ -38,6 +40,7 @@ const SignUpAddress = () => {
     addAddress();
     goToFeed(navigate);
   };
+
   return (
     <Container>
       <Header visibleArrow={true} />

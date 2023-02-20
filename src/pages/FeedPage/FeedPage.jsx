@@ -23,7 +23,6 @@ const Feed = () => {
 
   useProtectedPage();
 
-
   const getRestaurants = async () => {
     const token = localStorage.getItem("token");
     await axios
@@ -44,7 +43,6 @@ const Feed = () => {
   useEffect(() => {
     getRestaurants();
   }, []);
-
 
   const filterCategory = (restaurants) => {
     const arrayAux = [];

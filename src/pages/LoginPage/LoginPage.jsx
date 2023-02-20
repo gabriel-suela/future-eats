@@ -34,8 +34,6 @@ const LoginPage = () => {
     }, 2000);
   }, []);
 
-
-
   const navigate = useNavigate();
 
   const onSubmitLogin = (e) => {

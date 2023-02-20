@@ -3,7 +3,13 @@ import { IconButton } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
-import { ButtonStyled, Container, DivPassword, Form, InputMaterial } from "./styled";
+import {
+  ButtonStyled,
+  Container,
+  DivPassword,
+  Form,
+  InputMaterial,
+} from "./styled";
 import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToSignUpAddress } from "../../routes/coordinator";
@@ -20,7 +26,6 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [checkErrPass, setCheckErrPass] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
-
 
   const navigate = useNavigate();
 
@@ -39,7 +44,6 @@ const SignUp = () => {
     } else {
       setCheckErrPass(false);
       signUp();
-      goToSignUpAddress(navigate);
     }
   };
 
@@ -60,7 +64,7 @@ const SignUp = () => {
         alert("Usuário Cadastrado com sucesso!!");
         clean();
         setConfirmPassword("");
-        console.log(res.data);
+        goToSignUpAddress(navigate);
       })
       .catch((err) => {
         alert(`${err.response.data.message}`);
@@ -69,7 +73,7 @@ const SignUp = () => {
 
   return (
     <Container>
-      <Header visibleArrow={true}/>
+      <Header visibleArrow={true} />
       <p>Cadastrar</p>
       <Form onSubmit={onSubmitForm}>
         <InputMaterial
