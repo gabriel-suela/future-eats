@@ -16,12 +16,12 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   p {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 `;
 
 export const Form = styled.form`
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   height: 50%;

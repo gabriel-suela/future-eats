@@ -10,30 +10,26 @@ export const InputMaterial = styled(TextField)`
 `;
 
 export const LoginPageLoading = styled.div`
-  width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100vh;
+  background: #000000;
 
   img {
-    width: 100%;
-    height: 100%;
-    object-fit: fit;
+    width: 130px;
+    height: 65px;
+    object-fit: contain;
   }
 `;
 
-export const Main = styled.div`
+export const Container = styled.div`
   padding: 5px 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  p {
-    font-size: 1rem;
-    margin-bottom: 20px;
-  }
   img {
     width: 104px;
     height: 58px;

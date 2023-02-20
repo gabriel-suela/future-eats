@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
 import {
-  Main,
   Form,
   ButtonStyled,
   DivPassword,
   InputMaterial,
   DivButton,
   LoginPageLoading,
+  Container,
 } from "./styled";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { IconButton } from "@mui/material";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { useForm } from "../../hooks/useForm";
 import Logo from "../../assets/Logo-Future.png";
-import logoLogin from "../../assets/LoginLogo.png";
+import logoLogin from "../../assets/logo-black.png";
 
 const LoginPage = () => {
   const { form, onChange, clean } = useForm({
@@ -29,7 +26,7 @@ const LoginPage = () => {
   const [errPass, setErrPass] = useState("");
   const [checkErrEmail, setCheckErrEmail] = useState(false);
   const [checkErrPass, setCheckErrPass] = useState(false);
-  const [showLogo, setShowLogo] = useState(false);
+  const [showLogo, setShowLogo] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,9 +34,7 @@ const LoginPage = () => {
     }, 2000);
   }, []);
 
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+
 
   const navigate = useNavigate();
 
@@ -52,8 +47,8 @@ const LoginPage = () => {
     loginApi(userLogin);
   };
 
-  const loginApi = async () => {
-    await axios
+  const loginApi = () => {
+    axios
       .post(`${BASE_URL}/login`, form)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
@@ -83,9 +78,8 @@ const LoginPage = () => {
       )}
 
       {!showLogo && (
-        <Main>
+        <Container>
           <img src={Logo}></img>
-          <p>Entrar</p>
           <Form onSubmit={onSubmitLogin}>
             <InputMaterial
               error={checkErrEmail}
@@ -123,7 +117,7 @@ const LoginPage = () => {
               Não possui cadastro? Clique aqui.
             </button>
           </DivButton>
-        </Main>
+        </Container>
       )}
     </>
   );

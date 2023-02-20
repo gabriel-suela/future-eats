@@ -17,9 +17,11 @@ const Restaurants = () => {
     localStorage.getItem("token")
   );
 
-  const getRestaurants = async () => {
+
+
+  const getRestaurants = () => {
     const token = localStorage.getItem("token");
-    await axios
+    axios
       .get(`${BASE_URL}/restaurants/${restaurantId}`, {
         headers: {
           auth: token,
@@ -48,11 +50,7 @@ const Restaurants = () => {
             <CardRestaurantDetails restaurant={restaurant} />
             {restaurant.products &&
               restaurant.products.map((restaurant) => {
-                return (
-                  <CardProduct key={restaurant.id}
-                    product={restaurant}
-                  />
-                );
+                return <CardProduct key={restaurant.id} product={restaurant} />;
               })}
           </CardRestaurant>
         </>

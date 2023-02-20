@@ -16,13 +16,14 @@ const Feed = () => {
   const [inputText, setInputText] = useState("");
   const [categoryRestaurant, setCategoryRestaurant] = useState([]);
   const [valueCategory, setValueCategory] = useState("");
-  const [isActive, setIsActive] = useState(false);
   const [isLoading] = useRequestData(
     `${BASE_URL}/restaurants`,
     localStorage.getItem("token")
   );
 
   useProtectedPage();
+
+
   const getRestaurants = async () => {
     const token = localStorage.getItem("token");
     await axios
@@ -43,6 +44,7 @@ const Feed = () => {
   useEffect(() => {
     getRestaurants();
   }, []);
+
 
   const filterCategory = (restaurants) => {
     const arrayAux = [];
