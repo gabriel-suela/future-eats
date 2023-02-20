@@ -24,6 +24,12 @@
 <a href="#">FutureEats</a>
 
 <h2 id="imagens">📱 Imagens do site</h2>
+<div>
+<img align="left" width="292" alt="image" src="https://user-images.githubusercontent.com/96388423/219977536-1974394d-f297-42da-b855-da3183f4e65c.png">
+<img  width="293" alt="feed" src="https://user-images.githubusercontent.com/96388423/219976968-6f057536-aa41-40cc-8c7f-b5c65ceb3356.png">
+
+
+
 
 
 
@@ -34,7 +40,7 @@
 <p>🔎 Busca e seleção de restaurantes ✔️</p>
 <p>🗒️ Cardápio do restaurante ✔️</p>
 <p>🛒 Carrinho e finalizar compra ✖️</p>
-<p>✏️ Perfil, editar perfil e histórico de pedidos ✖️</p>
+<p>✏️ Perfil, editar perfil e histórico de pedidos ✔️</p>
 
 
  
