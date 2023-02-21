@@ -15,13 +15,15 @@ import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { useForm } from "../../hooks/useForm";
 import Logo from "../../assets/Logo-Future.png";
 import logoLogin from "../../assets/logo-black.png";
+import {BsFillEyeSlashFill} from 'react-icons/bs'
+import {IoEyeSharp} from 'react-icons/all'
 
 const LoginPage = () => {
   const { form, onChange, clean } = useForm({
     email: "",
     password: "",
   });
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
   const [errEmail, setErrEmail] = useState("");
   const [errPass, setErrPass] = useState("");
   const [checkErrEmail, setCheckErrEmail] = useState(false);
@@ -33,6 +35,9 @@ const LoginPage = () => {
       setShowLogo(false);
     }, 2000);
   }, []);
+
+  const clickShowPassword = () => setShowPassword(!showPassword)
+
 
   const navigate = useNavigate();
 
@@ -93,6 +98,7 @@ const LoginPage = () => {
               required
             />
             <DivPassword>
+              
               <InputMaterial
                 error={checkErrPass}
                 helperText={checkErrPass ? errPass : ""}
@@ -107,6 +113,10 @@ const LoginPage = () => {
                 inputProps={{ minlenght: 6 }}
                 required
               />
+              <button onClick={clickShowPassword} type="button">
+                        {showPassword ? <IoEyeSharp/> : <BsFillEyeSlashFill/>}
+                    </button>
+                
             </DivPassword>
             <ButtonStyled type="submit">Entrar</ButtonStyled>
           </Form>

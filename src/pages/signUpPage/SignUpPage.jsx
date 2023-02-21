@@ -14,6 +14,8 @@ import { BASE_URL } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToSignUpAddress } from "../../routes/coordinator";
 import Header from "../../components/Header/Header";
+import { IoEyeSharp } from "react-icons/io5";
+import { BsFillEyeSlashFill } from "react-icons/bs";
 
 const SignUp = () => {
   const { form, onChange, clean } = useForm({
@@ -125,13 +127,10 @@ const SignUp = () => {
             }}
             required
           />
-          <IconButton
-            aria-label="toggle password visibility"
-            onClick={handleClickShowPassword}
-            edge="end"
-          >
-            {showPassword ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
+            <button onClick={handleClickShowPassword} type="button">
+                        {showPassword ? <IoEyeSharp/> : <BsFillEyeSlashFill/>}
+                    </button>
+ 
         </DivPassword>
 
         <DivPassword>
@@ -149,14 +148,8 @@ const SignUp = () => {
               setConfirmPassword(e.target.value);
             }}
             required
-          ></InputMaterial>
-          <IconButton
-            aria-label="toggle password visibility"
-            onClick={handleClickShowConfirmedPassword}
-            edge="end"
-          >
-            {showConfirmedPassword ? <VisibilityOff /> : <Visibility />}
-          </IconButton>
+          />
+           
         </DivPassword>
         <ButtonStyled type={"submit"}>Confirmar</ButtonStyled>
       </Form>

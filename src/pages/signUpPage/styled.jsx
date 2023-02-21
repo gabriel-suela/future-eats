@@ -43,5 +43,23 @@ export const ButtonStyled = styled(Button)`
 export const DivPassword = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  button {
+    display: block;
+    position: absolute;
+    box-sizing: border-box;
+    top: 41%;
+    right: 10%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: 0;
+    svg {
+      width: 24px;
+      height: 24px;
+      margin: 5px 0 0 8px;
+      object-fit: contain;
+      color: var(--greyish);
+    }
+  }
 `;
