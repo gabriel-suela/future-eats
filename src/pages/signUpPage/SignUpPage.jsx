@@ -54,12 +54,6 @@ const SignUp = () => {
     form.password === confirmPassword
       ? setIsConfirmPasswordValid(true)
       : setIsConfirmPasswordValid(false);
-
-    // isEmailValid &&
-    //   isPasswordValid &&
-    //   isCPFValid &&
-    //   isNameValid &&
-    //   isConfirmPasswordValid &&
       signUp();
   };
 
@@ -87,8 +81,6 @@ const SignUp = () => {
       });
   };
 
-
-
   return (
     <Container>
       <Header visibleArrow={true} />
@@ -103,7 +95,7 @@ const SignUp = () => {
           variant="outlined"
           value={form.name}
           onChange={onChange}
-          // isValid={isNameValid}
+          isValid={isNameValid}
         />
 
         <InputMaterial
@@ -115,7 +107,7 @@ const SignUp = () => {
           variant="outlined"
           value={form.email}
           onChange={onChange}
-          // isValid={isEmailValid}
+          isValid={isEmailValid}
         />
 
         <InputMaterial
@@ -127,7 +119,7 @@ const SignUp = () => {
           variant="outlined"
           value={cpfMask(form.cpf)}
           onChange={onChange}
-          // isValid={isCPFValid}
+          isValid={isCPFValid}
         />
 
         <DivPassword>
@@ -140,7 +132,7 @@ const SignUp = () => {
             placeholder={"Mínimo 6 caracteres"}
             value={form.password}
             onChange={onChange}
-            // isValid={validatePassword}
+            isValid={isPasswordValid}
             required
           />
           <button onClick={handleClickShowPassword} type="button">
@@ -163,7 +155,7 @@ const SignUp = () => {
               setConfirmPassword(e.target.value);
             }}
             required
-            // isValid={isConfirmPasswordValid}
+            isValid={isConfirmPasswordValid}
           />
         </DivPassword>
         <ButtonStyled type={"submit"}>Confirmar</ButtonStyled>

@@ -11,7 +11,7 @@ import Loading from "../../components/Loading/Loading";
 import useProtectedPage from "../../hooks/useProtectedPage";
 
 const Restaurants = () => {
-  useProtectedPage()
+  useProtectedPage();
 
   const [restaurant, setRestaurant] = useState({});
   const { restaurantId } = useParams();
@@ -19,8 +19,6 @@ const Restaurants = () => {
     `${BASE_URL}/restaurants`,
     localStorage.getItem("token")
   );
-
-
 
   const getRestaurants = () => {
     const token = localStorage.getItem("token");
@@ -53,7 +51,7 @@ const Restaurants = () => {
             <CardRestaurantDetails restaurant={restaurant} />
             {restaurant.products &&
               restaurant.products.map((restaurant) => {
-                return <CardProduct key={restaurant.id} product={restaurant} />;
+                return <CardProduct key={restaurant.id} product={restaurant} restaurant={restaurant}/>;
               })}
           </CardRestaurant>
         </>

@@ -24,12 +24,23 @@ export const Container = styled.div`
 
 export const BoxInform = styled.div`
   width: 100%;
-  margin-top: 20px;
-
+  display: flex;
+  flex-direction: column;
   p {
     font-size: 12px;
     color: grey;
     margin: 8px 0;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+    width: 100%;
+  }
+
+  h4 {
+    font-weight: normal;
   }
 `;
 
@@ -44,22 +55,20 @@ export const BoxNameQuantity = styled.div`
 export const ProductQuantity = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
-  h4 {
-    font-weight: normal;
-  }
+  margin-top: 75px;
 
-  button {
-    background: transparent;
-    border: 1px solid black;
-    font-size: 12px;
-    border-color: var(--mid-green);
-    border-radius: 8px 0px;
-    width: 90px;
-    height: 31px;
-    margin: 7px 0 0 8px;
-    padding: 8px 20.5px 9px 21.5px;
-  }
+`;
+
+export const AddToCartBtn = styled.button`
+  background: transparent;
+  border: 1px solid black;
+  font-size: 12px;
+  border-color: var(--mid-green);
+  border-radius: 8px 0px;
+  width: 90px;
+  height: 31px;
+  margin: 7px 0 0 8px;
+  padding: 8px 20.5px 9px 21.5px;
 `;
 
 export const ButtonInfo = styled.button`
@@ -70,3 +79,26 @@ export const ButtonInfo = styled.button`
   outline: none;
   border: 1px black solid;
 `;
+
+export const RemoveButton = styled.button`
+  background: transparent;
+  border: 1px solid black;
+  font-size: 12px;
+  border-color: red;
+  border-radius: 8px 0px;
+  width: 90px;
+  height: 31px;
+  margin: 7px 0 0 8px;
+  padding: 8px 20.5px 9px 21.5px;
+  color: red;
+`;
+
+export const Quantity = styled.div `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: red;
+
+`
