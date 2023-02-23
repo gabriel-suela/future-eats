@@ -26,11 +26,9 @@ const SignUpAddress = () => {
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         alert("Endereço cadastrado com sucesso");
-        clear();
-        console.log(form);
+        goToFeed(navigate);
       })
       .catch((err) => {
-        alert(`${err.response.data.message}`);
         console.log(err.response.data.message);
       });
   };
@@ -38,7 +36,6 @@ const SignUpAddress = () => {
   const onSubmitForm = (e) => {
     e.preventDefault();
     addAddress();
-    goToFeed(navigate);
   };
 
   return (

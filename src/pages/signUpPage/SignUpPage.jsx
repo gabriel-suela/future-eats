@@ -1,5 +1,3 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
@@ -10,7 +8,13 @@ import {
   Form,
   InputMaterial,
 } from "./styled";
-import { BASE_URL, validatePassword } from "../../constants/url";
+import {
+  BASE_URL,
+  validateCPF,
+  validateEmail,
+  validateName,
+  validatePassword,
+} from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToSignUpAddress } from "../../routes/coordinator";
 import Header from "../../components/Header/Header";
@@ -32,7 +36,8 @@ const SignUp = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(undefined);
   const [isCPFValid, setIsCPFValid] = useState(undefined);
   const [isNameValid, setIsNameValid] = useState(true);
-  const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(undefined);
+  const [isConfirmPasswordValid, setIsConfirmPasswordValid] =
+    useState(undefined);
 
   const navigate = useNavigate();
 
@@ -46,17 +51,16 @@ const SignUp = () => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    setIsNameValid(validateName(form.name))
-        setIsEmailValid(validateEmail(form.email))
-        setIsPasswordValid(validatePassword(form.password))
-        setIsCPFValid(validateCPF(form.cpf))
+    form.password === confirmPassword
+      ? setIsConfirmPasswordValid(true)
+      : setIsConfirmPasswordValid(false);
 
-    if (form.password !== confirmPassword) {
-      setCheckErrPass(true);
-    } else {
-      setCheckErrPass(false);
-      isEmailValid && isPasswordValid && isCPFValid && isNameValid && isConfirmPasswordValid && signUp();
-    }
+    // isEmailValid &&
+    //   isPasswordValid &&
+    //   isCPFValid &&
+    //   isNameValid &&
+    //   isConfirmPasswordValid &&
+      signUp();
   };
 
   const cpfMask = (value) => {
@@ -68,8 +72,8 @@ const SignUp = () => {
       .replace(/(-\d{2})\d+?$/, "$1");
   };
 
-  const signUp = async () => {
-    await axios
+  const signUp = () => {
+    axios
       .post(`${BASE_URL}/signup`, form)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
@@ -82,6 +86,8 @@ const SignUp = () => {
         alert(`${err.response.data.message}`);
       });
   };
+
+
 
   return (
     <Container>
@@ -97,7 +103,7 @@ const SignUp = () => {
           variant="outlined"
           value={form.name}
           onChange={onChange}
-          isValid={isNameValid}
+          // isValid={isNameValid}
         />
 
         <InputMaterial
@@ -109,7 +115,7 @@ const SignUp = () => {
           variant="outlined"
           value={form.email}
           onChange={onChange}
-          isValid={isEmailValid}
+          // isValid={isEmailValid}
         />
 
         <InputMaterial
@@ -121,7 +127,7 @@ const SignUp = () => {
           variant="outlined"
           value={cpfMask(form.cpf)}
           onChange={onChange}
-          isValid={isCPFValid}
+          // isValid={isCPFValid}
         />
 
         <DivPassword>
@@ -134,7 +140,7 @@ const SignUp = () => {
             placeholder={"Mínimo 6 caracteres"}
             value={form.password}
             onChange={onChange}
-            isValid={validatePassword}
+            // isValid={validatePassword}
             required
           />
           <button onClick={handleClickShowPassword} type="button">
@@ -157,7 +163,7 @@ const SignUp = () => {
               setConfirmPassword(e.target.value);
             }}
             required
-            isValid={isConfirmPasswordValid}
+            // isValid={isConfirmPasswordValid}
           />
         </DivPassword>
         <ButtonStyled type={"submit"}>Confirmar</ButtonStyled>
