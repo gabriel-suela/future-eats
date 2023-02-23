@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../../constants/url";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import {
@@ -7,32 +7,74 @@ import {
   CartInform,
   Container,
   InfoProfile,
+  InfoRestaurant,
   PaymentInfo,
 } from "./styled";
-
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useGlobal } from "../../context/GlobalContext";
 import { useRequestData } from "../../hooks/useRequestData";
+import CardProduct from "../../components/CardProduct/CardProduct";
+import axios from "axios";
 
 const Cart = () => {
   useProtectedPage();
 
-  const [data, isLoading] = useRequestData(
-    `${BASE_URL}/profile`,
-    localStorage.getItem("token")
-  );
+  const [data] = useRequestData(`${BASE_URL}/profile`, localStorage.getItem('token'));
+  const [payment, setPayment] = useState("");
+  const [fullPrice, setFullPrice] = useState(0);
+  const { states, setters } = useGlobal();
+  const { cart, restaurant } = states;
+  const [paymentMethod] = useState(["Dinheiro", "Cartão de crédito"]);
 
-  const { requests, states } = useGlobal();
-  const { AddToCart, removeToCart } = requests;
-  const { cart } = states;
+  const totalPrice = () => {
+    let totalPrice = 0;
+    for (const product of cart) {
+      totalPrice += product.price * product.quantity;
+    }
+    setFullPrice(totalPrice);
+  };
 
-  const [paymentMethod, setPaymentMethod] = useState({
-    money: false,
-    creditcard: false,
-  });
+  useEffect(() => {
+    totalPrice();
+  }, []);
 
+  console.log(restaurant);
 
+  const placeOrder = () => {
+    const body = {
+      product: cart.map((product) => {
+        return {
+          id: product.id,
+          quantity: product.quantity,
+        };
+      }),
+      paymentMethod: payment,
+    };
+    axios
+      .post(`${BASE_URL}/restaurants/${restaurant.id}/order`, body, {
+        headers: {
+          auth: window.localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setters.setOrder(res.data.order);
+        setters.setCart([]);
+      })
+      .catch((err) => {
+        console.log(res.err);
+      });
+  };
+
+  const onSubmitPlaceOrder = (e) => {
+    e.preventDefault();
+    placeOrder();
+  };
+
+  const onChangePayment = (e) => {
+    setPayment(e.target.value);
+  };
 
   return (
     <Container>
@@ -42,28 +84,43 @@ const Cart = () => {
           <span>Endereço de entrega</span>
           <p>{data && data.user.address}</p>
         </InfoProfile>
+        <InfoRestaurant>
+        </InfoRestaurant>
         <CartInform>
-          <p>carrinho vazio</p>
+          {cart.length > 0 ? (
+            cart.map((product) => {
+              return <CardProduct product={product} restaurant={restaurant} />;
+            })
+          ) : (
+            <p>Carrinho Vazio</p>
+          )}
         </CartInform>
         <PaymentInfo>
-          <p>Frete R$00,00</p>
+          <p>Frete R$ {restaurant.shipping}</p>
           <div>
             <p>SUBTOTAL</p>
-            <p>R$00,00</p>
+            <p>R$ {fullPrice.toFixed(2).toString().replace(".", ",")}</p>
           </div>
         </PaymentInfo>
         <h4>Forma de pagamento</h4>
-        <form>
-          <div>
-            <input id={"money"} name={"money"} type={"radio"} value={paymentMethod}/>
-            <label htmlFor="dinheiro">Dinheiro</label>
-          </div>
-          <div>
-            <input id={"creditcard"} name={"creditcard"} type={"radio"} value={paymentMethod} />
-            <label htmlFor="cartão">Cartão</label>
-          </div>
+        <form onSubmit={onSubmitPlaceOrder}>
+          {paymentMethod.map((key) => {
+            const checked = paymentMethod[key];
+            return (
+              <div key={key}>
+                <input
+                  checked={checked}
+                  name={paymentMethod}
+                  id={key}
+                  type={"radio"}
+                  onChange={onChangePayment}
+                ></input>
+                <label>{key}</label>
+              </div>
+            );
+          })}
+          <ButtonStyled type="submit">Confirmar</ButtonStyled>
         </form>
-        <ButtonStyled>Confirmar</ButtonStyled>
       </CartConfig>
       <Footer page={"cart"}></Footer>
     </Container>

@@ -26,13 +26,12 @@ const CardProduct = ({ product, restaurant }) => {
     (productCart) => productCart.id === product.id
   );
 
-  console.log(productInCart);
   return (
     <Container>
       <img src={product.photoUrl} />
       <BoxInform>
         <h3>{product.name}</h3>
-        
+
         <p>{product.description}</p>
         <h4>R$ {product.price.toFixed(2).toString().replace(".", ",")}</h4>
         </BoxInform>

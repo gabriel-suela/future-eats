@@ -14,11 +14,9 @@ export const Container = styled.div`
     form {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         width: 100%;
         padding: 15px;
         input {
-      
             margin: 10px 0px;
             align-items: center;
             justify-content: center;
@@ -26,7 +24,6 @@ export const Container = styled.div`
 
         label{
             margin-left: 5px;
-            
         }
     }
 `
@@ -72,7 +69,6 @@ export const CartInform = styled.div `
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
 `
 
 export const PaymentValue = styled.div `
@@ -107,6 +103,10 @@ export const ButtonStyled = styled(Button)`
     border-radius: 2px;
     color: black;
     background-color: #5cb646;
-    width: 90%;
+    width: 100%;
   }
 `;
+
+export const InfoRestaurant = styled.div `
+    width: 100%;
+`
