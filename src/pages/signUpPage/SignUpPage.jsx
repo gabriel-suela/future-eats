@@ -10,7 +10,7 @@ import {
   Form,
   InputMaterial,
 } from "./styled";
-import { BASE_URL } from "../../constants/url";
+import { BASE_URL, validatePassword } from "../../constants/url";
 import { useNavigate } from "react-router-dom";
 import { goToSignUpAddress } from "../../routes/coordinator";
 import Header from "../../components/Header/Header";
@@ -28,6 +28,11 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [checkErrPass, setCheckErrPass] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(undefined);
+  const [isPasswordValid, setIsPasswordValid] = useState(undefined);
+  const [isCPFValid, setIsCPFValid] = useState(undefined);
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(undefined);
 
   const navigate = useNavigate();
 
@@ -41,11 +46,16 @@ const SignUp = () => {
 
   const onSubmitForm = (e) => {
     e.preventDefault();
+    setIsNameValid(validateName(form.name))
+        setIsEmailValid(validateEmail(form.email))
+        setIsPasswordValid(validatePassword(form.password))
+        setIsCPFValid(validateCPF(form.cpf))
+
     if (form.password !== confirmPassword) {
       setCheckErrPass(true);
     } else {
       setCheckErrPass(false);
-      signUp();
+      isEmailValid && isPasswordValid && isCPFValid && isNameValid && isConfirmPasswordValid && signUp();
     }
   };
 
@@ -87,6 +97,7 @@ const SignUp = () => {
           variant="outlined"
           value={form.name}
           onChange={onChange}
+          isValid={isNameValid}
         />
 
         <InputMaterial
@@ -98,6 +109,7 @@ const SignUp = () => {
           variant="outlined"
           value={form.email}
           onChange={onChange}
+          isValid={isEmailValid}
         />
 
         <InputMaterial
@@ -109,6 +121,7 @@ const SignUp = () => {
           variant="outlined"
           value={cpfMask(form.cpf)}
           onChange={onChange}
+          isValid={isCPFValid}
         />
 
         <DivPassword>
@@ -121,16 +134,12 @@ const SignUp = () => {
             placeholder={"Mínimo 6 caracteres"}
             value={form.password}
             onChange={onChange}
-            inputProps={{
-              minLength: 6,
-              title: "A senha deve conter no mínimo 6 caracteres",
-            }}
+            isValid={validatePassword}
             required
           />
-            <button onClick={handleClickShowPassword} type="button">
-                        {showPassword ? <IoEyeSharp/> : <BsFillEyeSlashFill/>}
-                    </button>
- 
+          <button onClick={handleClickShowPassword} type="button">
+            {showPassword ? <IoEyeSharp /> : <BsFillEyeSlashFill />}
+          </button>
         </DivPassword>
 
         <DivPassword>
@@ -148,8 +157,8 @@ const SignUp = () => {
               setConfirmPassword(e.target.value);
             }}
             required
+            isValid={isConfirmPasswordValid}
           />
-           
         </DivPassword>
         <ButtonStyled type={"submit"}>Confirmar</ButtonStyled>
       </Form>
