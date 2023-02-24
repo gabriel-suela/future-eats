@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
 
 const GlobalState = ({ children }) => {
@@ -8,10 +7,12 @@ const GlobalState = ({ children }) => {
   const [order, setOrder] = useState(null)
 
 
-  const addToCart = (product, quantity, restaurantProduct) => {
-    if (restaurant.id !== restaurantProduct.id) {
-      setRestaurant(restaurantProduct)
-      setCart([{...product,quantity}])
+
+
+
+  const addToCart = (  product, quantity, restaurantProduct) => {
+    if (restaurant.id === restaurantProduct.id) {
+      setCart([...cart, {...product, quantity}])
     } else {
       setCart([...cart, { ...product, quantity }]);
     }
@@ -22,6 +23,8 @@ const GlobalState = ({ children }) => {
     newCart.splice(index, 1);
     setCart(newCart);
   };
+  
+
   const states = { cart, restaurant, order };
   const requests = { addToCart, removeToCart };
   const setters = {setOrder, setCart}

@@ -10,6 +10,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Footer from "../../components/Footer/Footer";
 import { useRequestData } from "../../hooks/useRequestData";
 import Loading from "../../components/Loading/Loading";
+import { Toaster } from "sonner";
 
 const Feed = () => {
   const [restaurants, setRestaurants] = useState([]);

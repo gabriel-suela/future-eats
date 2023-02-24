@@ -1,9 +1,16 @@
 import * as React from "react";
 import Modal from "@mui/material/Modal";
 import { AddToCartBtn, BoxModal, QuantitySelect, TitleModal } from "./styled";
+import { Toaster, toast } from "sonner";
 
 const ModalQuantity = ({ open, setOpen, choiceQuantity }) => {
   const [quantity, setQuantity] = React.useState(1);
+
+
+  const addedToCart = () => {
+    choiceQuantity(Number(quantity))
+    toast('Produto adicionado ao carrinho!!!')
+  }
 
   return (
     <div>
@@ -26,7 +33,8 @@ const ModalQuantity = ({ open, setOpen, choiceQuantity }) => {
             <option>8</option>
             <option>9</option>
           </QuantitySelect>
-          <AddToCartBtn onClick={() => choiceQuantity(Number(quantity))}>
+          
+          <AddToCartBtn onClick={addedToCart}>
             Adicionar ao carrinho
           </AddToCartBtn>
         </BoxModal>

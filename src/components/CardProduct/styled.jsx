@@ -6,6 +6,8 @@ export const Container = styled.div`
   border: 1px solid var(--greyish);
   border-radius: 8px;
   align-items: center;
+  height: 112px;
+  width: 100%;
 
   img {
     width: 96px;
@@ -19,6 +21,8 @@ export const Container = styled.div`
     font-size: 1rem;
     color: var(--mid-green);
     font-weight: normal;
+    margin-bottom: 10px;
+    margin-top: 15px;
   }
 `;
 
@@ -29,18 +33,17 @@ export const BoxInform = styled.div`
   p {
     font-size: 12px;
     color: grey;
-    margin: 8px 0;
   }
 
   div {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    border: 1px solid red;
-    width: 100%;
   }
 
   h4 {
     font-weight: normal;
+    margin-top: 10px;
   }
 `;
 
@@ -54,8 +57,8 @@ export const BoxNameQuantity = styled.div`
 `;
 export const ProductQuantity = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-top: 75px;
+  flex-direction: column;
+  height: 100%;
 
 `;
 
@@ -67,7 +70,7 @@ export const AddToCartBtn = styled.button`
   border-radius: 8px 0px;
   width: 90px;
   height: 31px;
-  margin: 7px 0 0 8px;
+  margin: 20px 0 0 8px;
   padding: 8px 20.5px 9px 21.5px;
 `;
 
@@ -88,17 +91,16 @@ export const RemoveButton = styled.button`
   border-radius: 8px 0px;
   width: 90px;
   height: 31px;
-  margin: 7px 0 0 8px;
+  margin: 20px 0 0 8px;
   padding: 8px 20.5px 9px 21.5px;
   color: red;
 `;
 
 export const Quantity = styled.div `
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 2rem;
   height: 2rem;
   color: red;
-
+  margin-top: 10px;
+  font-family: Roboto;
+  font-weight: 500;
 `

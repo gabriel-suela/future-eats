@@ -10,6 +10,7 @@ import {
 } from "./styled";
 import { useState } from "react";
 import { useGlobal } from "../../context/GlobalContext";
+import { Toaster, toast } from "sonner";
 
 const CardProduct = ({ product, restaurant }) => {
   const [showModal, setShowModal] = useState(false);
@@ -26,32 +27,35 @@ const CardProduct = ({ product, restaurant }) => {
     (productCart) => productCart.id === product.id
   );
 
+  const BuyProduct = () => {
+    setShowModal(true);
+  };
+
   return (
     <Container>
       <img src={product.photoUrl} />
       <BoxInform>
-        <h3>{product.name}</h3>
-
+        <div>
+          <h3>{product.name}</h3>
+          {productInCart && <Quantity>{productInCart.quantity}</Quantity>}
+        </div>
         <p>{product.description}</p>
-        <h4>R$ {product.price.toFixed(2).toString().replace(".", ",")}</h4>
-        </BoxInform>
-        {productInCart && <Quantity>{productInCart.quantity}</Quantity>}
+
         <ProductQuantity>
+          <h4>R$ {product.price.toFixed(2).toString().replace(".", ",")}</h4>
           {productInCart ? (
             <RemoveButton onClick={() => removeToCart(product.id)}>
               Remover
             </RemoveButton>
           ) : (
-            <AddToCartBtn
-              onClick={() => {
-                setShowModal(true);
-              }}
-            >
-              Comprar
-            </AddToCartBtn>
+            <>
+              <Toaster />
+              <AddToCartBtn onClick={BuyProduct}>Comprar</AddToCartBtn>
+            </>
           )}
         </ProductQuantity>
-      
+      </BoxInform>
+
       <ModalQuantity
         choiceQuantity={choiceQuantity}
         open={showModal}

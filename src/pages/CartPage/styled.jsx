@@ -65,8 +65,9 @@ export const InfoProfile = styled.div`
 `
 
 export const CartInform = styled.div `
-    width: 100%;
+    width: 95%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 `

@@ -17,6 +17,7 @@ import Logo from "../../assets/Logo-Future.png";
 import logoLogin from "../../assets/logo-black.png";
 import {BsFillEyeSlashFill} from 'react-icons/bs'
 import {IoEyeSharp} from 'react-icons/all'
+import { toast, Toaster } from "sonner";
 
 const LoginPage = () => {
   const { form, onChange, clean } = useForm({
@@ -58,7 +59,7 @@ const LoginPage = () => {
         clean();
         setCheckErrEmail(false);
         setCheckErrPass(false);
-        alert(`Bem vindo ${res.data.user.name}`);
+        toast(`Bem vindo ${res.data.user.name}`);
         goToFeed(navigate);
       })
       .catch((err) => {
@@ -74,6 +75,7 @@ const LoginPage = () => {
 
   return (
     <>
+    
       {showLogo && (
         <LoginPageLoading>
           <img src={logoLogin} />

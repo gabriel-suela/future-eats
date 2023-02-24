@@ -14,7 +14,7 @@ export const Menu = styled.nav`
   width: 100%;
   display: flex;
   height: 2.62rem;
-  overflow: auto;
+  overflow-y: auto;
 `;
 
 export const MenuItem = styled.button`
