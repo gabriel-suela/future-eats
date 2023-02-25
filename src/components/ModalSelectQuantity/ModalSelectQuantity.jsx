@@ -9,7 +9,7 @@ const ModalQuantity = ({ open, setOpen, choiceQuantity }) => {
 
   const addedToCart = () => {
     choiceQuantity(Number(quantity))
-    toast('Produto adicionado ao carrinho!!!')
+    toast.success('Produto adicionado ao carrinho')
   }
 
   return (

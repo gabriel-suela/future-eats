@@ -42,7 +42,6 @@ const Cart = () => {
   }, []);
 
 
-  console.log(states);
 
 
 

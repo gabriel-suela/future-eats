@@ -23,6 +23,8 @@ const CardProduct = ({ product, restaurant }) => {
     setShowModal(false);
   };
 
+  console.log(cart);
+
   const productInCart = cart.find(
     (productCart) => productCart.id === product.id
   );
@@ -30,6 +32,11 @@ const CardProduct = ({ product, restaurant }) => {
   const BuyProduct = () => {
     setShowModal(true);
   };
+
+  const RemoveProduct = () => {
+    removeToCart(product.id)
+    toast.error('O item foi removido do carrinho')
+  }
 
   return (
     <Container>
@@ -44,12 +51,15 @@ const CardProduct = ({ product, restaurant }) => {
         <ProductQuantity>
           <h4>R$ {product.price.toFixed(2).toString().replace(".", ",")}</h4>
           {productInCart ? (
-            <RemoveButton onClick={() => removeToCart(product.id)}>
+            <>
+            <Toaster position="top-center" />
+            <RemoveButton onClick={RemoveProduct}>
               Remover
             </RemoveButton>
+            </>
           ) : (
             <>
-              <Toaster />
+              <Toaster position="top" />
               <AddToCartBtn onClick={BuyProduct}>Comprar</AddToCartBtn>
             </>
           )}

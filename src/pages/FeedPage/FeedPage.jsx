@@ -11,6 +11,8 @@ import Footer from "../../components/Footer/Footer";
 import { useRequestData } from "../../hooks/useRequestData";
 import Loading from "../../components/Loading/Loading";
 import { Toaster } from "sonner";
+import Order from "../../components/Order/Order";
+import { useGlobal } from "../../context/GlobalContext";
 
 const Feed = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -21,6 +23,11 @@ const Feed = () => {
     `${BASE_URL}/restaurants`,
     localStorage.getItem("token")
   );
+
+  const {states ,setters} = useGlobal()
+  const {setOrder} = setters
+  const {order} = states
+
 
   useProtectedPage();
 
@@ -43,6 +50,7 @@ const Feed = () => {
 
   useEffect(() => {
     getRestaurants();
+    getActiveOrder()
   }, []);
 
   const filterCategory = (restaurants) => {
@@ -78,6 +86,18 @@ const Feed = () => {
     .map((restaurant, item) => {
       return <CardRestaurant key={item} restaurant={restaurant} />;
     });
+
+
+    const getActiveOrder = () => {
+      const token = localStorage.getItem('token')
+      axios.get(`${BASE_URL}/active-order`, {headers: {
+        auth: token
+      }}).then((res)=>{
+        setOrder(res.data.order)
+      }).catch((err)=>{
+        console.log(err.data.message);
+      })
+    }
 
   const changeCategory = (category) => {
     setValueCategory(category);
@@ -138,7 +158,7 @@ const Feed = () => {
           </CardsRestaurant>
         </>
       )}
-
+      {order && <Order restaurantName={order.restaurantName} totalPrice={order.totalPrice}/>}
       <Footer page={"home"}></Footer>
     </Container>
   );
