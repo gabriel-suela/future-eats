@@ -12,7 +12,9 @@
 
 <h1 id="sobre">🍴 Projeto final do front-end labenu: FutureEats [WIP]</h1>
 
-<p>FutureEats é uma aplicação para mobile inspirada no aplicativo iFood, uma plataforma de entrega de pedidos de comida, que conecta restaurantes e consumidores.</p>
+<p>FutureEats é uma aplicação para mobile inspirada no aplicativo iFood, uma plataforma de entrega de pedidos de comida, que conecta restaurantes e consumidores.
+Projeto feito para ser visualizado em modo mobile.
+</p>
 
 <h2 id="orientacoes">🚨 Orientações para acesso</h2>
 
@@ -21,7 +23,7 @@
 
 <h2 id="link">🔗 Link surge: Link para visualização do site</h2>
 
-<a href="#">FutureEats</a>
+<a href="rough-mind.surge.sh">FutureEats</a>
 
 <h2 id="imagens">📱 Imagens do site</h2>
 <div>
