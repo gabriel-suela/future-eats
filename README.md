@@ -29,11 +29,6 @@
 <img  width="293" alt="feed" src="https://user-images.githubusercontent.com/96388423/219976968-6f057536-aa41-40cc-8c7f-b5c65ceb3356.png">
 
 
-
-
-
-
-
 <h2 id="features">✔️ Features</h2>
 
 <p>👤 Login/Cadastro ✔️</p>
@@ -43,6 +38,22 @@
 <p>✏️ Perfil, editar perfil e histórico de pedidos ✔️</p>
 
 
+## Rodando o projeto
+<pre>
+  <code>$ git clone https://github.com/gabriel-suela/future-eats.git</code>
+</pre>
+
+<pre>
+  <code>$ cd future-eats</code>
+</pre>
+
+<pre>
+  <code>$ yarn </code>
+</pre>
+
+<pre>
+  <code>$ yarn run dev </code>
+</pre>
  
  <h2 id="tecnologias">🛠 Tecnologias</h2>
  
