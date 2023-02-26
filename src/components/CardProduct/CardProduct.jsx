@@ -23,7 +23,7 @@ const CardProduct = ({ product, restaurant }) => {
     setShowModal(false);
   };
 
-  console.log(cart);
+ 
 
   const productInCart = cart.find(
     (productCart) => productCart.id === product.id

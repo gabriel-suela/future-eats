@@ -16,7 +16,6 @@ import { useGlobal } from "../../context/GlobalContext";
 import { useRequestData } from "../../hooks/useRequestData";
 import CardProduct from "../../components/CardProduct/CardProduct";
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const Cart = () => {
   useProtectedPage();
@@ -26,8 +25,9 @@ const Cart = () => {
   const [fullPrice, setFullPrice] = useState(0);
   const { states, setters } = useGlobal();
   const { cart, restaurant } = states;
-  const [paymentMethod] = useState(["Dinheiro", "Cartão de crédito"]);
-  const { restaurantId } = useParams()
+  const [paymentMethod] = useState(["Dinheiro", "Cartão de Crédito"]);
+
+  console.log(payment);
 
   const totalPrice = () => {
     let totalPrice = 0;
@@ -42,9 +42,6 @@ const Cart = () => {
   }, []);
 
 
-
-
-
   const placeOrder = () => {
     const body = {
       product: cart.map((product) => {
@@ -56,7 +53,7 @@ const Cart = () => {
       paymentMethod: payment,
     };
     axios
-      .post(`${BASE_URL}/restaurants/${restaurant.id}/order`, body, {
+      .post(`${BASE_URL}/restaurants/${states.restaurant.id}/order`, body, {
         headers: {
           auth: window.localStorage.getItem("token"),
         },
@@ -67,7 +64,7 @@ const Cart = () => {
         setters.setCart([]);
       })
       .catch((err) => {
-        console.log(res.err);
+        console.log(err.response.data);
       });
   };
 
@@ -90,6 +87,7 @@ const Cart = () => {
         </InfoProfile>
         <InfoRestaurant>
           <p>{restaurant.name}</p>
+          <p>{restaurant.address}</p>
         </InfoRestaurant>
         <CartInform>
           {cart.length > 0 ? (
