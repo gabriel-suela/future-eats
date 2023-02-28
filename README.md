@@ -1,16 +1,20 @@
-
-
-<p>
-<a href="#sobre">Sobre</a> |
-<a href="#orientacoes">Orientações</a> |
-<a href="#link">Link</a> |
-<a href="#imagens">Imagens</a> |
-<a href="#features">Features</a> |
-<a href="#tecnologias">Tecnologias</a> |
-<a href="#desenvolvedores">Desenvolvedores</a> |
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/gabriel-suela/labe-x?color=5CB646">
+  <a href="https://www.linkedin.com/in/gabriel-suela/" target="_blank" rel="noopener noreferrer">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Gabriel%20Suela-5CB646">
+  </a>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/gabriel-suela/future-eats?color=5CB646">
+  <a href="https://github.com/gabriel-suela/softwrap-api/commits">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gabriel-suela/future-eats?color=5CB646">
+  </a>
+<p align="center">
+  <a href="#-resumo">Resumo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-rodando-o-projeto">Rodando o projeto</a>&nbsp;&nbsp;&nbsp;
 </p>
 
-<h1 id="sobre">🍴 Projeto final do front-end labenu: FutureEats [WIP]</h1>
+
+## 🎯 Resumo ##
 
 <p>FutureEats é uma aplicação para mobile inspirada no aplicativo iFood, uma plataforma de entrega de pedidos de comida, que conecta restaurantes e consumidores.
 Projeto feito para ser visualizado em modo mobile.
@@ -31,7 +35,7 @@ Projeto feito para ser visualizado em modo mobile.
 <img  width="293" alt="feed" src="https://user-images.githubusercontent.com/96388423/219976968-6f057536-aa41-40cc-8c7f-b5c65ceb3356.png">
 
 
-<h2 id="features">✔️ Features</h2>
+## ✨ Funcionalidades ##
 
 <p>👤 Login/Cadastro ✔️</p>
 <p>🔎 Busca e seleção de restaurantes ✔️</p>
@@ -39,39 +43,40 @@ Projeto feito para ser visualizado em modo mobile.
 <p>🛒 Carrinho e finalizar compra ✖️</p>
 <p>✏️ Perfil, editar perfil e histórico de pedidos ✔️</p>
 
-
-## Rodando o projeto
-<pre>
-  <code>$ git clone https://github.com/gabriel-suela/future-eats.git</code>
-</pre>
-
-<pre>
-  <code>$ cd future-eats</code>
-</pre>
-
-<pre>
-  <code>$ yarn </code>
-</pre>
-
-<pre>
-  <code>$ yarn run dev </code>
-</pre>
+## 🚀 Tecnologias ##
  
- <h2 id="tecnologias">🛠 Tecnologias</h2>
+- [React](https://pt-br.reactjs.org/docs/getting-started.html)
+
+- [Styled-Components](https://styled-components.com/docs)
+
+- [MUI - Material UI](https://mui.com/)  
+
+- [Axios](https://github.com/axios/axios)
+
+## 💻 Rodando o projeto
+
+### Requisitos
+
+**Clone o projeto e acesse a pasta**
+
+```bash
+ git clone git@github.com:gabriel-suela/future-eats.git && cd future-eats
+```
+
+**Siga os passos abaixo**
+
+### Instale as dependências
+
+```bash
+yarn
+```
+### Inicie a aplicação
+
+```bash
+yarn run dev
+```
+
+---
  
-- ⚛️ [React](https://pt-br.reactjs.org/docs/getting-started.html)
+Made &nbsp;by Gabriel Suela 👋 &nbsp;[Veja meu linkedin](https://www.linkedin.com/in/gabriel-suela/)
 
-- 💅 [Styled-Components](https://styled-components.com/docs)
-
-- 💎 [MUI - Material UI]  
-
-- ⚛️ [Axios]
-
-<h2 id="desenvolvedores">👨‍💻 Desenvolvedores</h2>
-<table>         
-<td><a href="https://github.com/gabriel-suela"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/96388423?v=4" width="100px;" alt="Imagem profile Gabriel Suela desenvolvedor"/><br /><sub><b> Gabriel Suela </b></sub></a><br /> 
-
-
-</table>
-
-<a href="#voltar">Voltar para o topo ⬆️</a>
