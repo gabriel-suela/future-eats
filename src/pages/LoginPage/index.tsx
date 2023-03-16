@@ -7,6 +7,8 @@ import Logo from "../../assets/Logo-Future.png";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import logoLogin from "../../assets/logo-black.png";
+import { goToFeed } from "../../routes/coordinator";
+import { useNavigate } from "react-router-dom";
 interface LoginResponse {
   email: string;
   password: string;
@@ -27,7 +29,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClick = () => setShowPassword(!showPassword);
-
+  const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
       setShowLogo(false);
@@ -43,6 +45,7 @@ const LoginPage = () => {
       localStorage.setItem("token", response.data.token);
       clean();
       alert("Usuário Logado");
+      goToFeed(navigate);
     } catch (err) {
       console.error("An error occurred during login.", err);
       alert("Houve um erro ao tentar realizar o login.");

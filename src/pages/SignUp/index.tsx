@@ -28,9 +28,10 @@ const SignUp = () => {
     password: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(true);
+  const [isConfirmPasswordValid, setIsConfirmPasswordValid] = useState(false);
   const [showPassword, setShowPassoword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
+
   const handleConfirmedPassword = () =>
     setShowConfirmedPassword(!showConfirmedPassword);
   const handleClick = () => setShowPassoword(!showPassword);
@@ -48,12 +49,10 @@ const SignUp = () => {
     }
   };
 
-  const onSubmitSignUp = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmitSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    form.password === confirmPassword
-      ? setIsConfirmPasswordValid(true)
-      : setIsConfirmPasswordValid(false);
-    // fetchSignUp();
+    setIsConfirmPasswordValid(form.password === confirmPassword);
+    await fetchSignUp(form);
   };
 
   const cpfMask = (value: string) => {
