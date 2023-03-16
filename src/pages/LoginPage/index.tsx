@@ -6,54 +6,52 @@ import { Container, Form, ButtonStyled } from "./style";
 import Logo from "../../assets/Logo-Future.png";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+interface LoginResponse {
+  email: string;
+  password: string;
+  token: string;
+}
+
 interface LoginProps {
   email: string;
   password: string;
 }
-type UserLogin = {
-  email: string;
-  password: string;
-};
+
+interface ErrorResponseType {
+  response: { data: { message: string } };
+}
 
 const LoginPage = () => {
   const { form, onChange, clean } = useForm({
     email: "",
     password: "",
   });
-  const [errEmail, setErrEmail] = useState("");
-  const [errPass, setErrPass] = useState("");
-  const [checkErrEmail, setCheckErrEmail] = useState(false);
-  const [checkErrPass, setCheckErrPass] = useState(false);
   const [showLogo, setShowLogo] = useState(true);
-  const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleClick = () => setShow(!show);
+  const handleClick = () => setShowPassword(!showPassword);
 
   useEffect(() => {}, []);
 
-  const fetchLogin = async () => {
+  const fetchLogin = async (form: LoginProps) => {
     try {
-      await axios.post<LoginProps[]>(`${BASE_URL}/login`, form);
-      clean();
-      setCheckErrEmail(false);
-      setCheckErrPass(false);
+      const response = await axios.post<LoginProps>(`${BASE_URL}/login`, form);
+      localStorage.setItem("token", response.data.token);
       alert("Usuário Logado");
-    } catch (error: any) {
-      if (error.response.data.message.includes("Senha incorreta")) {
-        setErrPass(error.response.data.message);
-        setCheckErrPass(true);
-      } else {
-        setCheckErrEmail(error.respose.data.message);
-        setCheckErrEmail(true);
-      }
+    } catch (err) {
+      console.error("An error occurred during login.", err);
+      alert("Houve um erro ao tentar realizar o login.");
     }
-    fetchLogin();
   };
 
-  const onSubmitLogin = (e: any) => {
+  const onSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const userLogin: LoginProps = {
+      email: form.email,
+      password: form.password,
+    };
 
-    fetchLogin();
+    fetchLogin(userLogin);
   };
 
   return (
@@ -66,7 +64,7 @@ const LoginPage = () => {
             name="email"
             aria-label="email"
             type={"email"}
-            placeholder="email@email.com"
+            placeholder="Enter Email"
             value={form.email}
             onChange={onChange}
             required
@@ -79,12 +77,12 @@ const LoginPage = () => {
             value={form.password}
             onChange={onChange}
             pr="4.5rem"
-            type={show ? "text" : "password"}
+            type={showPassword ? "text" : "password"}
             placeholder="Enter password"
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" onClick={handleClick}>
-              {show ? <ViewIcon /> : <ViewOffIcon />}
+              {showPassword ? <ViewIcon /> : <ViewOffIcon />}
             </Button>
           </InputRightElement>
         </InputGroup>
