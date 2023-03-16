@@ -14,6 +14,19 @@ export const Container = styled.div`
     object-fit: contain;
   }
 `;
+export const LoginPageLoading = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000000;
+
+  img {
+    width: 130px;
+    height: 65px;
+    object-fit: contain;
+  }
+`;
 
 export const Form = styled.form`
   display: flex;

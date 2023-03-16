@@ -2,10 +2,11 @@ import useForm from "../../hooks/useForm";
 import { BASE_URL } from "../../utils/url";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container, Form, ButtonStyled } from "./style";
+import { Container, Form, ButtonStyled, LoginPageLoading } from "./style";
 import Logo from "../../assets/Logo-Future.png";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import logoLogin from "../../assets/logo-black.png";
 interface LoginResponse {
   email: string;
   password: string;
@@ -15,7 +16,6 @@ interface LoginResponse {
 interface LoginProps {
   email: string;
   password: string;
-  token: string;
 }
 
 interface ErrorResponseType {
@@ -32,7 +32,11 @@ const LoginPage = () => {
 
   const handleClick = () => setShowPassword(!showPassword);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLogo(false);
+    }, 2000);
+  }, []);
 
   const fetchLogin = async (form: LoginProps) => {
     try {
@@ -59,40 +63,49 @@ const LoginPage = () => {
   };
 
   return (
-    <Container>
-      <img src={Logo} />
-      <Form onSubmit={onSubmitLogin}>
-        <InputGroup size="md">
-          <Input
-            id="email"
-            name="email"
-            aria-label="email"
-            type={"email"}
-            placeholder="Enter Email"
-            value={form.email}
-            onChange={onChange}
-            required
-          />
-        </InputGroup>
-        <InputGroup>
-          <Input
-            id="password"
-            name="password"
-            value={form.password}
-            onChange={onChange}
-            pr="4.5rem"
-            type={showPassword ? "text" : "password"}
-            placeholder="Enter password"
-          />
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" onClick={handleClick}>
-              {showPassword ? <ViewIcon /> : <ViewOffIcon />}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-        <ButtonStyled type="submit">Entrar</ButtonStyled>
-      </Form>
-    </Container>
+    <>
+      {showLogo && (
+        <LoginPageLoading>
+          <img src={logoLogin} />
+        </LoginPageLoading>
+      )}
+      {!showLogo && (
+        <Container>
+          <img src={Logo} />
+          <Form onSubmit={onSubmitLogin}>
+            <InputGroup size="md">
+              <Input
+                id="email"
+                name="email"
+                aria-label="email"
+                type={"email"}
+                placeholder="Enter Email"
+                value={form.email}
+                onChange={onChange}
+                required
+              />
+            </InputGroup>
+            <InputGroup>
+              <Input
+                id="password"
+                name="password"
+                value={form.password}
+                onChange={onChange}
+                pr="4.5rem"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter password"
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" onClick={handleClick}>
+                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+            <ButtonStyled type="submit">Entrar</ButtonStyled>
+          </Form>
+        </Container>
+      )}
+    </>
   );
 };
 
