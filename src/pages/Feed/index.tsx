@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
+import NavBar from "../../components/NavBar";
 import RestaurantCard from "../../components/RestaurantCard";
 import { useGlobal } from "../../context/GlobalContext";
 import { BASE_URL } from "../../utils/url";
@@ -11,6 +12,7 @@ interface RestaurantProps {
   name: string;
   deliveryTime: number;
   shipping: number;
+  restaurants: any;
 }
 
 const Feed = () => {
@@ -45,6 +47,7 @@ const Feed = () => {
           restaurants.map((restaurant, item) => {
             return <RestaurantCard key={item} restaurant={restaurant} />;
           })}
+        <NavBar page={"home"} />
       </Container>
     </>
   );
