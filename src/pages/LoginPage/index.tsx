@@ -15,6 +15,7 @@ interface LoginResponse {
 interface LoginProps {
   email: string;
   password: string;
+  token: string;
 }
 
 interface ErrorResponseType {
@@ -35,7 +36,10 @@ const LoginPage = () => {
 
   const fetchLogin = async (form: LoginProps) => {
     try {
-      const response = await axios.post<LoginProps>(`${BASE_URL}/login`, form);
+      const response = await axios.post<LoginResponse>(
+        `${BASE_URL}/login`,
+        form
+      );
       localStorage.setItem("token", response.data.token);
       alert("Usuário Logado");
     } catch (err) {
