@@ -45,6 +45,8 @@ Projeto feito para ser visualizado em modo mobile.
 
 - [React](https://pt-br.reactjs.org/docs/getting-started.html)
 
+-[Typescript](https://www.typescriptlang.org/)
+
 - [Styled-Components](https://styled-components.com/docs)
 
 - [MUI - Material UI](https://mui.com/)
