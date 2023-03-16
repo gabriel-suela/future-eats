@@ -1,11 +1,11 @@
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/gabriel-suela/future-eatss?color=5CB646">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/gabriel-suela/future-eats?color=5CB646">
   <a href="https://www.linkedin.com/in/gabriel-suela/" target="_blank" rel="noopener noreferrer">
     <img alt="Made by" src="https://img.shields.io/badge/made%20by-Gabriel%20Suela-5CB646">
   </a>
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/gabriel-suela/future-eatss?color=5CB646">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/gabriel-suela/future-eats?color=5CB646">
   <a href="https://github.com/gabriel-suela/softwrap-api/commits">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gabriel-suela/future-eatss?color=5CB646">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/gabriel-suela/future-eats?color=5CB646">
   </a>
 <p align="center">
   <a href="#-resumo">Resumo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
