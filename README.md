@@ -49,7 +49,7 @@ Projeto feito para ser visualizado em modo mobile.
 
 - [Styled-Components](https://styled-components.com/docs)
 
-- [MUI - Material UI](https://mui.com/)
+- [Chakra UI](https://chakra-ui.com/)
 
 - [Axios](https://github.com/axios/axios)
 
