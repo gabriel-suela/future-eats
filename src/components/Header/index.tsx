@@ -17,7 +17,7 @@ const Header = ({ title, visibleArrow }: HeaderProps) => {
         <ChevronLeftIcon
           boxSize={7}
           onClick={() => {
-            // goToLastPage(navigate);
+            goToLastPage(navigate);
           }}
         />
       )}
