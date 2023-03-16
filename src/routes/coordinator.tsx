@@ -1,36 +1,33 @@
-type NavigateInput = string | number;
+import { NavigateFunction } from "react-router-dom";
 
-export const goToLogin = (navigate: (input: NavigateInput) => void) => {
+export const goToLogin = (navigate: NavigateFunction) => {
   navigate("/login");
 };
 
-export const goToSignUp = (navigate: (input: NavigateInput) => void) => {
+export const goToSignUp = (navigate: NavigateFunction) => {
   navigate("/signUp");
 };
 
-export const goToSignUpAddress = (navigate: (input: NavigateInput) => void) => {
+export const goToSignUpAddress = (navigate: NavigateFunction) => {
   navigate("/signUp/address");
 };
 
-export const goToFeed = (navigate: (input: NavigateInput) => void) => {
+export const goToFeed = (navigate: NavigateFunction) => {
   navigate("/");
 };
 
-export const goToRestaurants = (
-  navigate: (input: NavigateInput) => void,
-  id: (input: NavigateInput) => void
-) => {
+export const goToRestaurants = (navigate: NavigateFunction, id: string) => {
   navigate(`/feed/${id}`);
 };
 
-export const goToCart = (navigate: (input: NavigateInput) => void) => {
+export const goToCart = (navigate: NavigateFunction) => {
   navigate("/cart");
 };
 
-export const goToProfile = (navigate: (input: NavigateInput) => void) => {
+export const goToProfile = (navigate: NavigateFunction) => {
   navigate("/profile");
 };
 
-export const goToLastPage = (navigate: (input: NavigateInput) => void) => {
+export const goToLastPage = (navigate: NavigateFunction) => {
   navigate(-1);
 };
