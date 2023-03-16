@@ -18,10 +18,6 @@ interface LoginProps {
   password: string;
 }
 
-interface ErrorResponseType {
-  response: { data: { message: string } };
-}
-
 const LoginPage = () => {
   const { form, onChange, clean } = useForm({
     email: "",
@@ -45,6 +41,7 @@ const LoginPage = () => {
         form
       );
       localStorage.setItem("token", response.data.token);
+      clean();
       alert("Usuário Logado");
     } catch (err) {
       console.error("An error occurred during login.", err);
@@ -95,9 +92,25 @@ const LoginPage = () => {
                 type={showPassword ? "text" : "password"}
                 placeholder="Enter password"
               />
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" onClick={handleClick}>
-                  {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+              <InputRightElement width="2.5rem">
+                <Button
+                  h="1.75rem"
+                  background={"transparent"}
+                  onClick={handleClick}
+                >
+                  {showPassword ? (
+                    <ViewIcon
+                      boxSize={5}
+                      color="gray.500"
+                      background={"transparent"}
+                    />
+                  ) : (
+                    <ViewOffIcon
+                      boxSize={5}
+                      color="gray.500"
+                      background={"transparent"}
+                    />
+                  )}
                 </Button>
               </InputRightElement>
             </InputGroup>

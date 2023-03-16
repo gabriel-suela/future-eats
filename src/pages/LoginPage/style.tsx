@@ -36,14 +36,13 @@ export const Form = styled.form`
 
   input {
     margin-bottom: 15px;
-    height: 42px;
+    height: 50px;
   }
 `;
 
 export const ButtonStyled = styled.button`
   margin-top: 16px;
   height: 42px;
-  padding: 12px 16px;
   border-radius: 2px;
   color: black;
   background-color: var(--mid-green);
