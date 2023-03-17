@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { BASE_URL } from "../utils/url";
 import { GlobalContext } from "./GlobalContext";
 
@@ -8,24 +7,31 @@ interface Restaurant {
   img: string;
   name: string;
   deliveryTime: number;
+  id: string;
   shipping: number;
 }
 
-interface CartItem {}
-
-interface GlobalStateObject {
-  restaurant: Restaurant;
-  cart: CartItem[];
+interface CartItem {
+  quantity: number;
+  id: string;
 }
 
 type ChildrenProps = {
   children: React.ReactNode;
 };
 
+interface Product {
+  id: string;
+  name: string;
+  photoUrl: string;
+  quantity: number;
+  description: string;
+  price: number;
+}
+
 const GlobalState = ({ children }: ChildrenProps) => {
-  const [restaurant, setRestaurant] = useState({});
-  const [cart, setCart] = useState([]);
-  const { restaurantId } = useParams();
+  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [cart, setCart] = useState<CartItem[] | null>(null);
 
   const fetchRestaurant = async () => {
     try {
@@ -45,10 +51,9 @@ const GlobalState = ({ children }: ChildrenProps) => {
     fetchRestaurant();
   }, []);
 
-  const states = { cart, restaurant };
   const setters = { setRestaurant, setCart };
   return (
-    <GlobalContext.Provider value={{ states, setters }}>
+    <GlobalContext.Provider value={{ setters }}>
       {children}
     </GlobalContext.Provider>
   );

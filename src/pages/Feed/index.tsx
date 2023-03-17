@@ -1,10 +1,11 @@
 import { SearchIcon } from "@chakra-ui/icons";
-import { Input, InputGroup, InputLeftAddon } from "@chakra-ui/react";
+import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import RestaurantCard from "../../components/RestaurantCard";
+import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../utils/url";
 import { Container, RestaurantCards } from "./style";
 
@@ -21,6 +22,7 @@ type FilterRestaurantProps = {
 };
 
 const Feed = () => {
+  useProtectedPage();
   const [restaurants, setRestaurants] = useState([]);
   const [inputText, setInputText] = useState("");
   const fetchRestaurant = async () => {
@@ -58,7 +60,7 @@ const Feed = () => {
       <Header visibleArrow={true} title={"Restaurantes"} />
       <RestaurantCards>
         <InputGroup>
-          <InputLeftAddon
+          <InputLeftElement
             background={"transparent"}
             pointerEvents={"none"}
             children={<SearchIcon background={"transparent"} />}
