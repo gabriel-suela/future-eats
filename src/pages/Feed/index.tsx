@@ -5,22 +5,13 @@ import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import RestaurantCard from "../../components/RestaurantCard";
+import { Restaurant } from "../../context/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../utils/url";
 import { Container, RestaurantCards } from "./style";
 
-interface RestaurantProps {
-  img: string;
-  name: string;
-  deliveryTime: number;
-  logoUrl: string;
-  restaurant: any;
-  id: string;
-  shipping: number;
-}
-
 interface ApiResponse {
-  restaurants: RestaurantProps[];
+  restaurants: Restaurant[];
 }
 
 type FilterRestaurantProps = {
@@ -29,7 +20,7 @@ type FilterRestaurantProps = {
 
 const Feed = () => {
   useProtectedPage();
-  const [restaurants, setRestaurants] = useState<RestaurantProps[]>([]);
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [inputText, setInputText] = useState("");
   const fetchRestaurant = async () => {
     try {

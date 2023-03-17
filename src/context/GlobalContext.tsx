@@ -1,17 +1,20 @@
 import { createContext, useContext } from "react";
 
-interface CartItem {
+export interface CartItem {
   quantity: number;
   id: string;
-  restaurant: Restaurant[];
 }
 
-interface Restaurant {
+export interface Restaurant {
   img: string;
   name: string;
   deliveryTime: number;
   id: string;
   shipping: number;
+  logoUrl: string;
+  category: string;
+  address: string;
+  restaurant: any;
 }
 
 interface ContextProps {

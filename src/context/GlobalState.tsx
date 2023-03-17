@@ -1,25 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/url";
-import { GlobalContext } from "./GlobalContext";
+import { CartItem, GlobalContext, Restaurant } from "./GlobalContext";
 
-interface Restaurant {
-  logoUrl: string;
-  id: string;
-  name: string;
-
-  category: string;
-  deliveryTime: number;
-  shipping: number;
-  address: string;
-  restaurant: any;
-}
 interface ApiResponse {
   restaurant: Restaurant;
-}
-interface CartItem {
-  quantity: number;
-  id: string;
 }
 
 type ChildrenProps = {
@@ -42,7 +27,6 @@ const GlobalState = ({ children }: ChildrenProps) => {
         },
       });
       setRestaurant(response.data.restaurant);
-      console.log(restaurant);
     } catch (err) {
       console.error("An error occurred while trying to get restaurants");
     }
@@ -51,7 +35,7 @@ const GlobalState = ({ children }: ChildrenProps) => {
     product: ProductProps,
     quantity: number,
     newRestaurant: Restaurant
-  ) => {
+  ): void => {
     if (newRestaurant.id === restaurant?.id) {
       setCart([{ ...product, quantity }]);
     } else {

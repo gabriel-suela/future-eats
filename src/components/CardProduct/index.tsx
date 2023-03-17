@@ -9,11 +9,11 @@ import {
   RemoveButton,
 } from "./styled";
 import { Toaster, toast } from "sonner";
-import { useGlobal } from "../../context/GlobalContext";
+import { Restaurant, useGlobal } from "../../context/GlobalContext";
 
 type ProductProps = {
   product: any;
-  restaurant: any;
+  restaurant: Restaurant;
 };
 
 const CardProduct = React.memo(({ product, restaurant }: ProductProps) => {

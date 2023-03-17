@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { Restaurant } from "../../context/GlobalContext";
 import { goToRestaurants } from "../../routes/coordinator";
 import { BoxInformTimePrice, Container } from "./styled";
 
 type RestaurantProps = {
-  restaurant: any;
+  restaurant: Restaurant;
 };
 
 const CardRestaurantDetails = ({ restaurant }: RestaurantProps) => {
