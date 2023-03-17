@@ -1,10 +1,21 @@
 import { Input, InputGroup } from "@chakra-ui/react";
 import axios from "axios";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import useForm from "../../hooks/useForm";
+import { goToFeed } from "../../routes/coordinator";
 import { BASE_URL } from "../../utils/url";
 import { ButtonStyled, Container, Form } from "./styled";
+
+interface SignUpAddressProps {
+  street: string;
+  number: number;
+  neighbourhood: string;
+  city: string;
+  state: string;
+  complement: string;
+}
 
 const SignUpAddress = () => {
   const { form, onChange, clean } = useForm({
@@ -18,22 +29,26 @@ const SignUpAddress = () => {
 
   const navigate = useNavigate();
 
-  const fetchAddress = async () => {
+  const fetchAddress = async (form: SignUpAddressProps) => {
     try {
-      const response = await axios.put(`${BASE_URL}/address`, {
+      const response = await axios.put(`${BASE_URL}/address`, form, {
         headers: {
           auth: localStorage.getItem("token"),
         },
       });
       localStorage.setItem("token", response.data.token);
-    } catch (error) {
+      alert("Usuário cadastrado");
+      clean();
+    } catch (error: any) {
       console.error(error);
+      alert(`${error.response.data.message}`);
     }
   };
 
-  const onSubmitForm = (e: any) => {
+  const onSubmitForm = async (e: any) => {
     e.preventDefault();
-    fetchAddress();
+    await fetchAddress(form);
+    goToFeed(navigate);
   };
 
   return (
@@ -45,12 +60,11 @@ const SignUpAddress = () => {
           <Input
             id="street"
             name="street"
-            aria-label="street"
+            aria-label="Logradouro"
             type={"text"}
             placeholder="Rua / Av."
             value={form.street}
             onChange={onChange}
-            required
           />
         </InputGroup>
 
@@ -59,11 +73,10 @@ const SignUpAddress = () => {
             id="number"
             name="number"
             aria-label="number"
-            type={"number"}
+            type="number"
             placeholder="Número"
             value={form.number}
             onChange={onChange}
-            required
           />
         </InputGroup>
 
@@ -76,7 +89,6 @@ const SignUpAddress = () => {
             placeholder="Apto. / Bloco"
             value={form.complement}
             onChange={onChange}
-            required
           />
         </InputGroup>
 
@@ -89,7 +101,6 @@ const SignUpAddress = () => {
             placeholder="Bairro"
             value={form.neighbourhood}
             onChange={onChange}
-            required
           />
         </InputGroup>
 
@@ -102,7 +113,6 @@ const SignUpAddress = () => {
             placeholder="Cidade"
             value={form.city}
             onChange={onChange}
-            required
           />
         </InputGroup>
 
@@ -115,10 +125,9 @@ const SignUpAddress = () => {
             placeholder="Estado"
             value={form.state}
             onChange={onChange}
-            required
           />
         </InputGroup>
-        <ButtonStyled>Confirmar</ButtonStyled>
+        <ButtonStyled type="submit">Confirmar</ButtonStyled>
       </Form>
     </Container>
   );
