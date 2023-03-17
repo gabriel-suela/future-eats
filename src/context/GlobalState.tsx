@@ -20,15 +20,6 @@ type ChildrenProps = {
   children: React.ReactNode;
 };
 
-interface Product {
-  id: string;
-  name: string;
-  photoUrl: string;
-  quantity: number;
-  description: string;
-  price: number;
-}
-
 const GlobalState = ({ children }: ChildrenProps) => {
   const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
   const [cart, setCart] = useState<CartItem[] | null>(null);
@@ -50,11 +41,13 @@ const GlobalState = ({ children }: ChildrenProps) => {
   useEffect(() => {
     fetchRestaurant();
   }, []);
-
+  const states = { restaurant, cart };
   const setters = { setRestaurant, setCart };
   return (
-    <GlobalContext.Provider value={{ setters }}>
+    <GlobalContext.Provider value={{ setters, states }}>
       {children}
     </GlobalContext.Provider>
   );
 };
+
+export default GlobalState;
