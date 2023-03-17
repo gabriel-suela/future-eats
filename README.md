@@ -68,13 +68,13 @@ Projeto feito para ser visualizado em modo mobile.
 ### Instale as dependências
 
 ```bash
-yarn
+npm i
 ```
 
 ### Inicie a aplicação
 
 ```bash
-yarn run dev
+npm run dev
 ```
 
 ---
