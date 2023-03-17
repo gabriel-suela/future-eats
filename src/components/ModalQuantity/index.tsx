@@ -20,8 +20,6 @@ const ModalQuantity = ({ open, setOpen }: IModalQuantityProps) => {
   };
   return (
     <>
-      {/* <Button onClick={onOpen}>Open Modal</Button> */}
-
       <Modal size={"xs"} isCentered={true} isOpen={open} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>

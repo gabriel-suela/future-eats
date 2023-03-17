@@ -3,18 +3,9 @@ import ModalQuantity from "../ModalQuantity";
 import { AddToCartBtn, BoxInform, Container, ProductQuantity } from "./styled";
 import { Toaster, toast } from "sonner";
 
-interface Product {
-  photoUrl: string;
-  name: string;
-  id: string;
-  quantity: number;
-  description: string;
-  price: number;
-}
-
 type ProductProps = {
-  product: Product;
-  restaurant: React.ReactNode; // Update this type according to your code
+  product: any;
+  restaurant: any;
 };
 
 const CardProduct = React.memo(({ product, restaurant }: ProductProps) => {

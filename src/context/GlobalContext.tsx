@@ -16,13 +16,13 @@ interface Restaurant {
 interface ContextProps {
   setters: {
     setCart: React.Dispatch<React.SetStateAction<CartItem[] | null>>;
-    setRestaurant: React.Dispatch<React.SetStateAction<Restaurant | null>>;
+    setRestaurant: React.Dispatch<React.SetStateAction<Restaurant | undefined>>;
   };
   states: {
     cart: CartItem[] | null;
-    restaurant: Restaurant | null;
+    restaurant: Restaurant | undefined;
   };
 }
 
-export const GlobalContext = createContext<null | ContextProps>(null);
+export const GlobalContext = createContext<ContextProps>({} as ContextProps);
 export const useGlobal = () => useContext(GlobalContext);

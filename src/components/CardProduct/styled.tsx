@@ -45,7 +45,6 @@ export const BoxInform = styled.div`
     font-weight: normal;
     font-size: 0.9rem;
     margin-top: 10px;
-    border: 1px solid red;
   }
 `;
 

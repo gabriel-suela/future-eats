@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar";
+import OrderHistory from "../../components/OrderHistory";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../utils/url";
 import { Address, Container, History, ProfileInfo } from "./styled";
@@ -28,7 +29,6 @@ const Profile = () => {
         },
       });
       setProfile(response.data.user);
-      ("");
     } catch (error) {
       console.error(error);
     }
@@ -37,8 +37,6 @@ const Profile = () => {
   useEffect(() => {
     fetchProfile();
   }, []);
-
-  console.log(profile);
 
   return (
     <Container>
@@ -56,6 +54,7 @@ const Profile = () => {
       </Address>
       <History>
         <p>Histórico de pedidos</p>
+        <OrderHistory />
       </History>
       <NavBar page={"profile"} />
     </Container>

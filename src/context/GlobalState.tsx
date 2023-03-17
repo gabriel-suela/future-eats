@@ -11,6 +11,9 @@ interface Restaurant {
   shipping: number;
 }
 
+interface ApiResponse {
+  restaurant: Restaurant;
+}
 interface CartItem {
   quantity: number;
   id: string;
@@ -21,12 +24,12 @@ type ChildrenProps = {
 };
 
 const GlobalState = ({ children }: ChildrenProps) => {
-  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [restaurant, setRestaurant] = useState<Restaurant>();
   const [cart, setCart] = useState<CartItem[] | null>(null);
 
   const fetchRestaurant = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/restaurants`, {
+      const response = await axios.get<ApiResponse>(`${BASE_URL}/restaurants`, {
         headers: {
           auth: localStorage.getItem("token"),
         },

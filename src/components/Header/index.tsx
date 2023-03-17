@@ -1,5 +1,4 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { goToLastPage } from "../../routes/coordinator";
 import { Container, Title } from "./style";

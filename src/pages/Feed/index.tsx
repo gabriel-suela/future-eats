@@ -17,13 +17,10 @@ interface RestaurantProps {
   restaurant: any;
   id: string;
   shipping: number;
-  restaurants: React.ReactNode;
 }
 
 interface ApiResponse {
-  data: {
-    restaurants: RestaurantProps[];
-  };
+  restaurants: RestaurantProps[];
 }
 
 type FilterRestaurantProps = {
@@ -41,7 +38,7 @@ const Feed = () => {
           auth: localStorage.getItem("token"),
         },
       });
-      setRestaurants(response.data.data.restaurants);
+      setRestaurants(response.data.restaurants);
     } catch (err) {
       console.error("An error occurred while trying to get restaurants");
     }

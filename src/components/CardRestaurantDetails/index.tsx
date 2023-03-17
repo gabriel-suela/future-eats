@@ -2,19 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { goToRestaurants } from "../../routes/coordinator";
 import { BoxInformTimePrice, Container } from "./styled";
 
-interface Restaurant {
-  logoUrl: string;
-  id: string;
-  name: string;
-  category: string;
-  deliveryTime: number;
-  shipping: number;
-  address: string;
-  restaurant: React.ReactNode;
-}
-
 type RestaurantProps = {
-  restaurant: Restaurant;
+  restaurant: any;
 };
 
 const CardRestaurantDetails = ({ restaurant }: RestaurantProps) => {

@@ -15,28 +15,34 @@ interface Product {
   quantity: number;
   description: string;
   price: number;
+  restaurant: any;
 }
 
 interface Restaurant {
   logoUrl: string;
   id: string;
   name: string;
+
   category: string;
   deliveryTime: number;
   shipping: number;
   address: string;
-  products: Product[];
   restaurant: any;
+  products: Product[];
+}
+
+interface ApiResponse {
+  restaurant: Restaurant;
 }
 
 const Restaurants = () => {
   useProtectedPage();
-  const [restaurant, setRestaurant] = useState<Restaurant | null>(null);
+  const [restaurant, setRestaurant] = useState<Restaurant>();
   const { restaurantId } = useParams<{ restaurantId: string }>();
 
   const fetchRestaurants = async () => {
     try {
-      const response = await axios.get<{ restaurants: Restaurant }>(
+      const response = await axios.get<ApiResponse>(
         `${BASE_URL}/restaurants/${restaurantId}`,
         {
           headers: {
@@ -61,7 +67,7 @@ const Restaurants = () => {
         <CardRestaurant>
           {restaurant && <CardRestaurantDetails restaurant={restaurant} />}
           {restaurant?.products &&
-            restaurant?.products.map((product: Product) => {
+            restaurant.products.map((product: Product) => {
               return (
                 <CardProduct
                   key={product.id}
