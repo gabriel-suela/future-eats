@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 interface CartItem {
   quantity: number;
   id: string;
+  restaurant: Restaurant[];
 }
 
 interface Restaurant {
@@ -21,6 +22,14 @@ interface ContextProps {
   states: {
     cart: CartItem[] | null;
     restaurant: Restaurant | undefined;
+  };
+  requests: {
+    addToCart: (
+      cartItem: CartItem,
+      quantity: number,
+      restaurant: Restaurant
+    ) => void;
+    removeToCart: (id: string) => void;
   };
 }
 

@@ -4,13 +4,16 @@ import { BASE_URL } from "../utils/url";
 import { GlobalContext } from "./GlobalContext";
 
 interface Restaurant {
-  img: string;
-  name: string;
-  deliveryTime: number;
+  logoUrl: string;
   id: string;
-  shipping: number;
-}
+  name: string;
 
+  category: string;
+  deliveryTime: number;
+  shipping: number;
+  address: string;
+  restaurant: any;
+}
 interface ApiResponse {
   restaurant: Restaurant;
 }
@@ -21,6 +24,10 @@ interface CartItem {
 
 type ChildrenProps = {
   children: React.ReactNode;
+};
+
+type ProductProps = {
+  id: string;
 };
 
 const GlobalState = ({ children }: ChildrenProps) => {
@@ -40,14 +47,40 @@ const GlobalState = ({ children }: ChildrenProps) => {
       console.error("An error occurred while trying to get restaurants");
     }
   };
+  const addToCart = (
+    product: ProductProps,
+    quantity: number,
+    newRestaurant: Restaurant
+  ) => {
+    if (newRestaurant.id === restaurant?.id) {
+      setCart([{ ...product, quantity }]);
+    } else {
+      setCart([
+        ...(cart || []), // <-- checks for cart being a falsy value and treats it as an empty array; equivalent to 'cart ? [...cart] : []'
+        { ...product, quantity },
+      ]);
+      setRestaurant(newRestaurant);
+    }
+  };
 
+  const removeToCart = (id: string): void => {
+    if (cart) {
+      const index = cart.findIndex((prod) => prod.id === id);
+      if (index >= 0) {
+        const newCart = [...cart];
+        newCart.splice(index, 1);
+        setCart(newCart);
+      }
+    }
+  };
   useEffect(() => {
     fetchRestaurant();
   }, []);
   const states = { restaurant, cart };
+  const requests = { addToCart, removeToCart };
   const setters = { setRestaurant, setCart };
   return (
-    <GlobalContext.Provider value={{ setters, states }}>
+    <GlobalContext.Provider value={{ setters, states, requests }}>
       {children}
     </GlobalContext.Provider>
   );

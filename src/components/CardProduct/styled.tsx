@@ -6,7 +6,6 @@ export const Container = styled.div`
   border: 1px solid var(--greyish);
   border-radius: 8px;
   align-items: center;
-  height: 112px;
   width: 100%;
 
   img {
@@ -72,7 +71,6 @@ export const AddToCartBtn = styled.button`
   width: 90px;
   height: 31px;
   margin: 13px 0 0 0;
-  /* padding: 8px 20.5px 9px 21.5px; */
 `;
 
 export const ButtonInfo = styled.button`
@@ -92,8 +90,8 @@ export const RemoveButton = styled.button`
   border-radius: 8px 0px;
   width: 90px;
   height: 31px;
-  margin: 20px 0 0 8px;
-  padding: 8px 20.5px 9px 21.5px;
+  margin: 15px 0 0 8px;
+  padding: 8px 20px 9px 21.5px;
   color: red;
 `;
 

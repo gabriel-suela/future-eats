@@ -50,7 +50,14 @@ const OrderHistory = () => {
       );
     });
 
-  return <>{orderHistory && orderHistory.length > 0 && listHistory}</>;
+  return (
+    <>
+      {orderHistory && orderHistory.length > 0 && listHistory}
+      {orderHistory && orderHistory.length === 0 && (
+        <p>Você ainda não realizou nenhum pedido</p>
+      )}
+    </>
+  );
 };
 
 export default OrderHistory;
