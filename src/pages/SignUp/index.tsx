@@ -79,7 +79,7 @@ const SignUp = () => {
     <>
       <Container>
         <Header visibleArrow={true} />
-        <p>Cadastrar</p>
+        <p>Cadastro</p>
         <Form onSubmit={onSubmitSignUp}>
           <InputGroup size="md">
             <Input

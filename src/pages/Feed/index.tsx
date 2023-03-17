@@ -13,8 +13,17 @@ interface RestaurantProps {
   img: string;
   name: string;
   deliveryTime: number;
+  logoUrl: string;
+  restaurant: any;
+  id: string;
   shipping: number;
-  restaurants: any;
+  restaurants: React.ReactNode;
+}
+
+interface ApiResponse {
+  data: {
+    restaurants: RestaurantProps[];
+  };
 }
 
 type FilterRestaurantProps = {
@@ -23,19 +32,16 @@ type FilterRestaurantProps = {
 
 const Feed = () => {
   useProtectedPage();
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState<RestaurantProps[]>([]);
   const [inputText, setInputText] = useState("");
   const fetchRestaurant = async () => {
     try {
-      const response = await axios.get<RestaurantProps[]>(
-        `${BASE_URL}/restaurants`,
-        {
-          headers: {
-            auth: localStorage.getItem("token"),
-          },
-        }
-      );
-      setRestaurants(response.data.restaurants);
+      const response = await axios.get<ApiResponse>(`${BASE_URL}/restaurants`, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      });
+      setRestaurants(response.data.data.restaurants);
     } catch (err) {
       console.error("An error occurred while trying to get restaurants");
     }
