@@ -1,6 +1,7 @@
+import { Alert } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 import CardProduct from "../../components/CardProduct";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
@@ -70,10 +71,9 @@ const Cart = () => {
       );
       setOrder(response.data.order);
       setCart([]);
-      toast.success("Pedido realizado com sucesso!!");
       setFullPrice(0);
+      toast.success("Pedido realizado com sucesso!!!");
     } catch (error: any) {
-      console.log(error);
       toast.error(`${error.response.data.message}`);
     }
   };
@@ -144,6 +144,7 @@ const Cart = () => {
             />
             <label>Cartão de Crédito</label>
           </div>
+          <Toaster />
           <ButtonStyled type="submit">Confirmar</ButtonStyled>
         </form>
       </CartConfig>
