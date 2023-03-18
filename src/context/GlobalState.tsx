@@ -13,9 +13,13 @@ type ChildrenProps = {
 
 type ProductProps = {
   id: string;
+  price: number;
+  product: string;
 };
 
 interface NewCartItem extends CartItem {
+  price: number;
+  product: string;
   quantity: number;
 }
 
@@ -55,8 +59,6 @@ const GlobalState = ({ children }: ChildrenProps) => {
       const newCartItem: NewCartItem = {
         ...product,
         quantity,
-        price: 0,
-        product: "",
       };
       setCart([...(cart || []), newCartItem]);
     }
@@ -75,7 +77,7 @@ const GlobalState = ({ children }: ChildrenProps) => {
     fetchRestaurant();
   }, []);
 
-  const states = { restaurant, cart: cart ?? [], order };
+  const states = { restaurant, cart: cart ?? [], order: order ?? null };
   const requests = { addToCart, removeToCart };
   const setters = { setRestaurant, setCart, setOrder };
   const values = { states, requests, setters };

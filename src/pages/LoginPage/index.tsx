@@ -15,6 +15,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import logoLogin from "../../assets/logo-black.png";
 import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 interface LoginResponse {
   email: string;
   password: string;
@@ -52,9 +53,8 @@ const LoginPage = () => {
       clean();
       alert("Usuário Logado");
       goToFeed(navigate);
-    } catch (err) {
-      console.error("An error occurred during login.", err);
-      alert("Houve um erro ao tentar realizar o login.");
+    } catch (error: any) {
+      toast.error(`${error.data.message}`);
     }
   };
 

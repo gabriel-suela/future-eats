@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import CardProduct from "../../components/CardProduct";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
@@ -24,10 +25,6 @@ const Cart = () => {
   const { states, setters } = useGlobal();
   const { setOrder, setCart } = setters;
   const { cart = [], restaurant, order } = states;
-  const [paymentMethod] = useState<Array<string>>([
-    "Dinheiro",
-    "Cartão de Crédito",
-  ]);
   useProtectedPage();
 
   const fetchProfile = async () => {
@@ -48,21 +45,22 @@ const Cart = () => {
     totalPrice();
   }, []);
 
+  let products =
+    cart &&
+    cart.map((product) => {
+      return { id: product.id, quantity: product.quantity };
+    });
+
   const fetchOrder = async () => {
     const body = {
-      product: cart?.map((product) => {
-        return {
-          id: product.id,
-          quantity: product.quantity,
-        };
-      }),
+      products: products,
       paymentMethod: payment,
     };
     console.log(body);
 
     try {
       const response = await axios.post(
-        `${BASE_URL}/${restaurant?.id}/order`,
+        `${BASE_URL}/restaurants/${restaurant?.id}/order`,
         body,
         {
           headers: {
@@ -70,16 +68,18 @@ const Cart = () => {
           },
         }
       );
-      alert("pedido realizado");
+      toast.success(`Pedido realizado com sucesso!!`);
       setOrder(response.data.order);
       setCart([]);
-    } catch (error) {
-      console.error(error);
+      toast.success(`${response.data.messsage}`);
+    } catch (error: any) {
+      console.log(error);
+      toast.error(`${error.response.data.message}`);
     }
   };
 
   const totalPrice = () => {
-    let totalPrice = 0;
+    let totalPrice = restaurant?.shipping ?? 0;
     for (const product of cart ?? []) {
       totalPrice += product.price * product.quantity;
     }
@@ -118,30 +118,32 @@ const Cart = () => {
           )}
         </CartInform>
         <PaymentInfo>
-          <p>Frete R$ {restaurant?.shipping},00</p>
+          <p>Frete R${restaurant?.shipping},00</p>
           <div>
             <p>SUBTOTAL</p>
-            <p>R$ {fullPrice.toFixed(2).toString().replace(".", ",")}</p>
+            <p>R${fullPrice.toFixed(2).toString().replace(".", ",")}</p>
           </div>
         </PaymentInfo>
         <h4>Forma de pagamento</h4>
         <form onSubmit={onSubmitPlaceOrder}>
-          {paymentMethod.map((element, index) => {
-            const checked = payment === element;
-            return (
-              <div key={index}>
-                <input
-                  checked={checked}
-                  name={"paymentMethod"}
-                  id={index.toString()}
-                  type={"radio"}
-                  onChange={onChangePayment}
-                  value={element}
-                ></input>
-                <label>{element}</label>
-              </div>
-            );
-          })}
+          <div>
+            <input
+              name="payment"
+              value={"money"}
+              onChange={onChangePayment}
+              type={"radio"}
+            />
+            <label>Dinheiro</label>
+          </div>
+          <div>
+            <input
+              name="payment"
+              value={"creditcart"}
+              onChange={onChangePayment}
+              type={"radio"}
+            />
+            <label>Cartão de Crédito</label>
+          </div>
           <ButtonStyled type="submit">Confirmar</ButtonStyled>
         </form>
       </CartConfig>

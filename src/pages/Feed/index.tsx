@@ -2,6 +2,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import RestaurantCard from "../../components/RestaurantCard";
@@ -30,8 +31,8 @@ const Feed = () => {
         },
       });
       setRestaurants(response.data.restaurants);
-    } catch (err) {
-      console.error("An error occurred while trying to get restaurants");
+    } catch (error: any) {
+      toast.error(`${error.data.message}`);
     }
   };
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import NavBar from "../../components/NavBar";
 import OrderHistory from "../../components/OrderHistory";
 import useProtectedPage from "../../hooks/useProtectedPage";
@@ -29,8 +30,8 @@ const Profile = () => {
         },
       });
       setProfile(response.data.user);
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      toast.error(`${error.data.message}`);
     }
   };
 

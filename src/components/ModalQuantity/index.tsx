@@ -1,5 +1,5 @@
 // import Modal from "@mui/material/Modal";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import {
   Modal,
   ModalOverlay,

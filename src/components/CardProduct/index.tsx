@@ -9,7 +9,7 @@ import {
   RemoveButton,
 } from "./styled";
 import { Toaster, toast } from "sonner";
-import { Restaurant, useGlobal } from "../../context/GlobalContext";
+import { useGlobal } from "../../context/GlobalContext";
 
 type ProductProps = {
   product: any;
@@ -54,12 +54,12 @@ const CardProduct = React.memo(({ product, restaurant }: ProductProps) => {
           </span>
           {productInCart ? (
             <>
-              <Toaster position="top-center" />
+              <Toaster position="bottom-center" />
               <RemoveButton onClick={RemoveProduct}>Remover</RemoveButton>
             </>
           ) : (
             <>
-              <Toaster position="top-center" />
+              <Toaster position="bottom-center" />
               <AddToCartBtn onClick={BuyProduct}>Comprar</AddToCartBtn>
             </>
           )}

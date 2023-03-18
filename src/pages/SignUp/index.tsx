@@ -3,6 +3,7 @@ import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import Header from "../../components/Header";
 import useForm from "../../hooks/useForm";
 import { goToSignUpAddress } from "../../routes/coordinator";
@@ -37,9 +38,8 @@ const SignUp = () => {
     try {
       const response = await axios.post(`${BASE_URL}/signup`, form);
       localStorage.setItem("token", response.data.token);
-    } catch (err) {
-      console.error("An error occurred during signup", err);
-      alert("Houve um erro ao tentar realizar o cadastro");
+    } catch (error: any) {
+      toast.error(`${error.data.message}`);
     }
   };
 

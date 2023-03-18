@@ -1,6 +1,5 @@
 import { Input, InputGroup } from "@chakra-ui/react";
 import axios from "axios";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import useForm from "../../hooks/useForm";

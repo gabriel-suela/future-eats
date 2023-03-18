@@ -51,7 +51,6 @@ const Restaurants = () => {
         }
       );
       setRestaurant(response.data.restaurant);
-      console.log(restaurant);
     } catch (err) {
       console.error(err);
     }
