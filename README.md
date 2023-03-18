@@ -1,3 +1,5 @@
+<img align="center" src="https://user-images.githubusercontent.com/96388423/226130458-8c13ca8c-49d9-4fcc-81d8-b2ff8023f57f.png"/>
+
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/gabriel-suela/future-eats?color=5CB646">
   <a href="https://www.linkedin.com/in/gabriel-suela/" target="_blank" rel="noopener noreferrer">
