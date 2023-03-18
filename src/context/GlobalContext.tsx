@@ -18,7 +18,31 @@ export interface Restaurant {
   restaurant: any;
 }
 
-interface ContextProps {}
+type Product = {
+  id: string;
+  price: number;
+  product: any;
+};
+
+interface ContextProps {
+  states: {
+    cart: CartItem[];
+    restaurant: Restaurant | undefined;
+    order: string | any;
+  };
+  setters: {
+    setOrder: (order: string | null) => void;
+    setCart: (cart: CartItem[]) => void;
+  };
+  requests: {
+    addToCart: (
+      product: Product,
+      quantity: number,
+      newRestaurant: Restaurant
+    ) => void;
+    removeToCart: (id: string) => void;
+  };
+}
 
 export const GlobalContext = createContext<ContextProps>({} as ContextProps);
 export const useGlobal = () => useContext(GlobalContext);
