@@ -24,9 +24,9 @@ Projeto feito para ser visualizado em modo mobile.
 - Realizar o login se já possui um cadastro;
 - Realizar o cadastro com dados pessoais e endereço, automaticamente será redirecionado para a página com a lista de restaurantes.
 
-<h2 id="link">🔗 Link surge: Link para visualização do site</h2>
+<h2 id="link">🔗 Deploy: Link para visualização do site</h2>
 
-<a href="https://trite-yarn.surge.sh/">FutureEats</a>
+<a href="https://future-eats-pi.vercel.app/">FutureEats</a>
 
 <h2 id="imagens">📱 Imagens do site</h2>
 <img  align="left" height="400"src="https://user-images.githubusercontent.com/96388423/226124599-4e2cd5fc-b64a-495c-af52-e17aeee95abd.png"/>
