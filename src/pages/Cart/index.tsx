@@ -68,10 +68,10 @@ const Cart = () => {
           },
         }
       );
-      toast.success("Pedido realizado com sucesso!!");
       setOrder(response.data.order);
       setCart([]);
-      toast.success(`${response.data.messsage}`);
+      toast.success("Pedido realizado com sucesso!!");
+      setFullPrice(0);
     } catch (error: any) {
       console.log(error);
       toast.error(`${error.response.data.message}`);
@@ -138,7 +138,7 @@ const Cart = () => {
           <div>
             <input
               name="payment"
-              value={"creditcart"}
+              value={"creditcard"}
               onChange={onChangePayment}
               type={"radio"}
             />

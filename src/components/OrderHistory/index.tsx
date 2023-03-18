@@ -21,6 +21,7 @@ const OrderHistory = () => {
         },
       });
       setOrderHistory(response.data.orders);
+      console.log(orderHistory);
     } catch (error) {
       console.error(error);
     }

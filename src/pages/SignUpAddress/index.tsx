@@ -1,6 +1,7 @@
 import { Input, InputGroup } from "@chakra-ui/react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import Header from "../../components/Header";
 import useForm from "../../hooks/useForm";
 import { goToFeed } from "../../routes/coordinator";
@@ -36,7 +37,7 @@ const SignUpAddress = () => {
         },
       });
       localStorage.setItem("token", response.data.token);
-      alert("Usuário cadastrado");
+      toast.success("Usuário cadastrado");
       clean();
     } catch (error: any) {
       console.error(error);
