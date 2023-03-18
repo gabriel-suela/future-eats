@@ -2,12 +2,18 @@ import useForm from "../../hooks/useForm";
 import { BASE_URL } from "../../utils/url";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Container, Form, ButtonStyled, LoginPageLoading } from "./style";
+import {
+  Container,
+  Form,
+  ButtonStyled,
+  LoginPageLoading,
+  DivButton,
+} from "./style";
 import Logo from "../../assets/Logo-Future.png";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import logoLogin from "../../assets/logo-black.png";
-import { goToFeed } from "../../routes/coordinator";
+import { goToFeed, goToSignUp } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 interface LoginResponse {
   email: string;
@@ -79,7 +85,7 @@ const LoginPage = () => {
                 name="email"
                 aria-label="email"
                 type={"email"}
-                placeholder="Enter Email"
+                placeholder="email@email.com"
                 value={form.email}
                 onChange={onChange}
                 required
@@ -93,7 +99,7 @@ const LoginPage = () => {
                 onChange={onChange}
                 pr="4.5rem"
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter password"
+                placeholder="Mínimo 6 caracteres"
               />
               <InputRightElement width="2.5rem">
                 <Button
@@ -119,6 +125,11 @@ const LoginPage = () => {
             </InputGroup>
             <ButtonStyled type="submit">Entrar</ButtonStyled>
           </Form>
+          <DivButton>
+            <button onClick={() => goToSignUp(navigate)}>
+              Não possui cadastro? Clique aqui.
+            </button>
+          </DivButton>
         </Container>
       )}
     </>

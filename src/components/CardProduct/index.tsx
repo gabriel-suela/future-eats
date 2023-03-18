@@ -13,7 +13,7 @@ import { Restaurant, useGlobal } from "../../context/GlobalContext";
 
 type ProductProps = {
   product: any;
-  restaurant: Restaurant;
+  restaurant: any;
 };
 
 const CardProduct = React.memo(({ product, restaurant }: ProductProps) => {

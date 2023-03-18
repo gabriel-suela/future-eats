@@ -49,3 +49,15 @@ export const ButtonStyled = styled.button`
   width: 100%;
   text-align: center;
 `;
+
+export const DivButton = styled.div`
+  button {
+    width: 360px;
+    height: 42px;
+    border: 0;
+    background: white;
+    font-size: 16px;
+    letter-spacing: -0.39px;
+    margin-top: 28px;
+  }
+`;

@@ -122,7 +122,7 @@ const SignUp = () => {
               onChange={onChange}
               pr="4.5rem"
               type={showPassword ? "text" : "password"}
-              placeholder="Enter password"
+              placeholder="Mínimo 6 caracteres"
             />
             <InputRightElement width="2.5rem">
               <Button
@@ -157,7 +157,7 @@ const SignUp = () => {
               }}
               pr="4.5rem"
               type={showConfirmedPassword ? "text" : "password"}
-              placeholder="Confirm password"
+              placeholder="Confirme a senha"
             />
             <InputRightElement width="2.5rem">
               <Button

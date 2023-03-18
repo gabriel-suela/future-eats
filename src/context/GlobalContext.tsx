@@ -8,7 +8,6 @@ export interface CartItem {
 }
 
 export interface Restaurant {
-  img: string;
   name: string;
   deliveryTime: number;
   id: string;
@@ -19,26 +18,7 @@ export interface Restaurant {
   restaurant: any;
 }
 
-interface ContextProps {
-  setters: {
-    setCart: React.Dispatch<React.SetStateAction<CartItem[] | null>>;
-    setRestaurant: React.Dispatch<React.SetStateAction<Restaurant | undefined>>;
-    setOrder: React.Dispatch<React.SetStateAction<null>>;
-  };
-  states: {
-    cart: CartItem[] | null;
-    restaurant: Restaurant | undefined;
-    order: any;
-  };
-  requests: {
-    addToCart: (
-      cartItem: CartItem,
-      quantity: number,
-      restaurant: Restaurant
-    ) => void;
-    removeToCart: (id: string) => void;
-  };
-}
+interface ContextProps {}
 
 export const GlobalContext = createContext<ContextProps>({} as ContextProps);
 export const useGlobal = () => useContext(GlobalContext);

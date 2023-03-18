@@ -7,7 +7,6 @@ type Restaurant = {
   id: string;
   logoUrl: string;
   shipping: number;
-  img: string;
   name: string;
   deliveryTime: number;
   restaurant: React.ReactNode;
