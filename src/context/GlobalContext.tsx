@@ -2,8 +2,9 @@ import { createContext, useContext } from "react";
 
 export interface CartItem {
   price: number;
-  quantity: number;
+  product: any;
   id: string;
+  quantity: number;
 }
 
 export interface Restaurant {
@@ -22,10 +23,12 @@ interface ContextProps {
   setters: {
     setCart: React.Dispatch<React.SetStateAction<CartItem[] | null>>;
     setRestaurant: React.Dispatch<React.SetStateAction<Restaurant | undefined>>;
+    setOrder: React.Dispatch<React.SetStateAction<null>>;
   };
   states: {
     cart: CartItem[] | null;
     restaurant: Restaurant | undefined;
+    order: any;
   };
   requests: {
     addToCart: (

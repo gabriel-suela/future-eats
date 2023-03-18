@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CardProduct from "../../components/CardProduct";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
@@ -22,7 +22,8 @@ const Cart = () => {
   const [payment, setPayment] = useState<string>("");
   const [fullPrice, setFullPrice] = useState(() => 0);
   const { states, setters } = useGlobal();
-  const { cart = [], restaurant } = states;
+  const { setOrder, setCart } = setters;
+  const { cart = [], restaurant, order } = states;
   const [paymentMethod] = useState<Array<string>>([
     "Dinheiro",
     "Cartão de Crédito",
@@ -47,12 +48,47 @@ const Cart = () => {
     totalPrice();
   }, []);
 
+  const fetchOrder = async () => {
+    const body = {
+      product: cart?.map((product) => {
+        return {
+          id: product.id,
+          quantity: product.quantity,
+        };
+      }),
+      paymentMethod: payment,
+    };
+    console.log(body);
+
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/${restaurant?.id}/order`,
+        body,
+        {
+          headers: {
+            auth: localStorage.getItem("token"),
+          },
+        }
+      );
+      alert("pedido realizado");
+      setOrder(response.data.order);
+      setCart([]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const totalPrice = () => {
     let totalPrice = 0;
     for (const product of cart ?? []) {
       totalPrice += product.price * product.quantity;
     }
     setFullPrice(totalPrice);
+  };
+
+  const onSubmitPlaceOrder = (e: any) => {
+    e.preventDefault();
+    fetchOrder();
   };
 
   const onChangePayment = (e: any) => {
@@ -89,7 +125,7 @@ const Cart = () => {
           </div>
         </PaymentInfo>
         <h4>Forma de pagamento</h4>
-        <form>
+        <form onSubmit={onSubmitPlaceOrder}>
           {paymentMethod.map((element, index) => {
             const checked = payment === element;
             return (

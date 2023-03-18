@@ -98,8 +98,11 @@ export const RemoveButton = styled.button`
 export const Quantity = styled.div`
   width: 2rem;
   height: 2rem;
-  color: red;
-  margin-top: 10px;
+  color: var(--mid-green);
+  border: 1px solid;
+  border-radius: 0 8px 0 8px;
+  border-color: var(--mid-green);
+  padding-left: 10px;
   font-family: Roboto;
   font-weight: 500;
 `;

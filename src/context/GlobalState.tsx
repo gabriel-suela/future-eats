@@ -15,9 +15,16 @@ type ProductProps = {
   id: string;
 };
 
+interface NewCartItem extends CartItem {
+  quantity: number;
+}
+
 const GlobalState = ({ children }: ChildrenProps) => {
-  const [restaurant, setRestaurant] = useState<Restaurant>();
-  const [cart, setCart] = useState<CartItem[] | null>(null);
+  const [restaurant, setRestaurant] = useState<Restaurant | undefined>(
+    undefined
+  );
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [order, setOrder] = useState<string | null>(null);
 
   const fetchRestaurant = async () => {
     try {
@@ -26,7 +33,10 @@ const GlobalState = ({ children }: ChildrenProps) => {
           auth: localStorage.getItem("token"),
         },
       });
-      setRestaurant(response.data.restaurant);
+      const newRestaurant = response.data.restaurant;
+      if (newRestaurant != null) {
+        setRestaurant(newRestaurant);
+      }
     } catch (err) {
       console.error("An error occurred while trying to get restaurants");
     }
@@ -36,37 +46,42 @@ const GlobalState = ({ children }: ChildrenProps) => {
     quantity: number,
     newRestaurant: Restaurant
   ): void => {
-    if (newRestaurant.id === restaurant?.id) {
-      setCart([{ ...product, quantity }]);
+    const index = cart?.findIndex((item) => item.id === product.id);
+    if (index !== undefined && index >= 0) {
+      const updatedCart = [...(cart as CartItem[])];
+      updatedCart[index].quantity += quantity;
+      setCart(updatedCart);
     } else {
-      setCart([
-        ...(cart || []), // <-- checks for cart being a falsy value and treats it as an empty array; equivalent to 'cart ? [...cart] : []'
-        { ...product, quantity },
-      ]);
+      const newCartItem: NewCartItem = {
+        ...product,
+        quantity,
+        price: 0,
+        product: "",
+      };
+      setCart([...(cart || []), newCartItem]);
+    }
+    if (restaurant === undefined || restaurant.id !== newRestaurant.id) {
       setRestaurant(newRestaurant);
     }
   };
 
   const removeToCart = (id: string): void => {
-    if (cart) {
-      const index = cart.findIndex((prod) => prod.id === id);
-      if (index >= 0) {
-        const newCart = [...cart];
-        newCart.splice(index, 1);
-        setCart(newCart);
-      }
+    if (cart !== null) {
+      setCart(cart.filter((item) => item.id !== id));
     }
   };
+
   useEffect(() => {
     fetchRestaurant();
   }, []);
-  const states = { restaurant, cart };
+
+  const states = { restaurant, cart: cart ?? [], order };
   const requests = { addToCart, removeToCart };
-  const setters = { setRestaurant, setCart };
+  const setters = { setRestaurant, setCart, setOrder };
+  const values = { states, requests, setters };
+
   return (
-    <GlobalContext.Provider value={{ setters, states, requests }}>
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={values}>{children}</GlobalContext.Provider>
   );
 };
 
