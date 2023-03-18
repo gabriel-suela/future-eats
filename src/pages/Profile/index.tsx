@@ -6,13 +6,13 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../utils/url";
 import { Address, Container, History, ProfileInfo } from "./styled";
 
-interface ProfileProps {
+export interface ProfileProps {
   email: string;
   name: string;
   address: string;
 }
 
-interface ApiResponse {
+export interface ApiResponse {
   user: ProfileProps;
 }
 
