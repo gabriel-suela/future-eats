@@ -29,19 +29,21 @@ Projeto feito para ser visualizado em modo mobile.
 <a href="https://trite-yarn.surge.sh/">FutureEats</a>
 
 <h2 id="imagens">📱 Imagens do site</h2>
-<div>
-<img align="left" width="292" alt="image" src="https://user-images.githubusercontent.com/96388423/219977536-1974394d-f297-42da-b855-da3183f4e65c.png">
-<img  width="293" alt="feed" src="https://user-images.githubusercontent.com/96388423/219976968-6f057536-aa41-40cc-8c7f-b5c65ceb3356.png">
+<img  align="left" height="400"src="https://user-images.githubusercontent.com/96388423/226124599-4e2cd5fc-b64a-495c-af52-e17aeee95abd.png"/>
+<img  align="left" height="400" src="https://user-images.githubusercontent.com/96388423/226124831-4f5866e9-1296-45cb-9037-1f70f2b6ae3c.png"/>
+<img  align="left" height="400" src="https://user-images.githubusercontent.com/96388423/226125680-a812fdbc-e0f7-4027-840c-958574be67b5.png"/>
+<img  height="400" src="https://user-images.githubusercontent.com/96388423/226125767-1032952e-6d43-4a1a-9ee3-cd0e620a7587.png"/>
 
 ## ✨ Funcionalidades
 
 <p>👤 Login/Cadastro ✔️</p>
 <p>🔎 Busca e seleção de restaurantes ✔️</p>
 <p>🗒️ Cardápio do restaurante ✔️</p>
-<p>🛒 Carrinho e finalizar compra ✖️</p>
+<p>🛒 Carrinho e finalizar compra ✔️</p>
 <p>✏️ Perfil, editar perfil e histórico de pedidos ✔️</p>
 
 ## 🚀 Tecnologias
+
 
 - [React](https://pt-br.reactjs.org/docs/getting-started.html)
 
