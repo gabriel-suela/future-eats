@@ -32,7 +32,6 @@ Projeto feito para ser visualizado em modo mobile.
 <img  align="left" height="400"src="https://user-images.githubusercontent.com/96388423/226124599-4e2cd5fc-b64a-495c-af52-e17aeee95abd.png"/>
 <img  align="left" height="400" src="https://user-images.githubusercontent.com/96388423/226124831-4f5866e9-1296-45cb-9037-1f70f2b6ae3c.png"/>
 <img  align="left" height="400" src="https://user-images.githubusercontent.com/96388423/226125680-a812fdbc-e0f7-4027-840c-958574be67b5.png"/>
-<img  align="left" height="400" src="https://user-images.githubusercontent.com/96388423/226125728-630eb58e-9a64-469f-8c23-b4b6ec32691f.png"/>
 <img  height="400" src="https://user-images.githubusercontent.com/96388423/226125767-1032952e-6d43-4a1a-9ee3-cd0e620a7587.png"/>
 
 ## ✨ Funcionalidades
