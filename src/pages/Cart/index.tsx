@@ -68,7 +68,7 @@ const Cart = () => {
           },
         }
       );
-      toast.success(`Pedido realizado com sucesso!!`);
+      toast.success("Pedido realizado com sucesso!!");
       setOrder(response.data.order);
       setCart([]);
       toast.success(`${response.data.messsage}`);
