@@ -33,7 +33,7 @@ const OrderHistory = () => {
 
 	const listHistory =
 		orderHistory &&
-		orderHistory.map((order) => {
+		orderHistory.map((order, index) => {
 			let subtotal = order.totalPrice.toFixed(2).toString().replace(".", ",");
 			let newTime = new Date(order.createdAt);
 
@@ -43,7 +43,7 @@ const OrderHistory = () => {
 				year: "numeric",
 			});
 			return (
-				<OrderCard key={order.id}>
+				<OrderCard key={index}>
 					<p>{order.restaurantName}</p>
 					<p>{formattedDate}</p>
 					<p>SUBTOTAL R${subtotal}</p>
