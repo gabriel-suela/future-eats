@@ -89,7 +89,7 @@ const Feed = () => {
 						children={<SearchIcon background={"transparent"} />}
 					/>
 					<Input
-						type="tel"
+						type="text"
 						value={inputText}
 						onChange={(e) => setInputText(e.target.value)}
 						placeholder="Nome do restaurante"
