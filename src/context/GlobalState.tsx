@@ -1,7 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/url";
-import { CartItem, GlobalContext, OrderP, Restaurant } from "./GlobalContext";
+import {
+	CartItem,
+	GlobalContext,
+	OrderProps,
+	Restaurant,
+} from "./GlobalContext";
 
 interface ApiResponse {
 	restaurant: Restaurant;
@@ -28,7 +33,7 @@ const GlobalState = ({ children }: ChildrenProps) => {
 		undefined
 	);
 	const [cart, setCart] = useState<CartItem[]>([]);
-	const [order, setOrder] = useState<OrderP>({} as OrderP);
+	const [order, setOrder] = useState<OrderProps | undefined>(undefined);
 
 	const fetchRestaurant = async () => {
 		try {
@@ -77,7 +82,7 @@ const GlobalState = ({ children }: ChildrenProps) => {
 		fetchRestaurant();
 	}, []);
 
-	const states = { restaurant, cart: cart ?? [], order: order ?? [] };
+	const states = { restaurant, cart: cart ?? [], order };
 	const requests = { addToCart, removeToCart };
 	const setters = { setRestaurant, setCart, setOrder };
 	const values = { states, requests, setters };

@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import Order from "../../components/Order";
 import RestaurantCard from "../../components/RestaurantCard";
-import { OrderP, Restaurant, useGlobal } from "../../context/GlobalContext";
+import { OrderProps, Restaurant, useGlobal } from "../../context/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../utils/url";
 import { Container, RestaurantCards } from "./style";
@@ -20,17 +20,22 @@ type FilterRestaurantProps = {
 	name: string;
 };
 
-interface ActiveOrderResponse {
-	order: OrderP[];
-}
-
 const Feed = () => {
 	useProtectedPage();
 	const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+	const [activeOrder, setActiveOrder] = useState<OrderProps | undefined>(
+		undefined
+	);
 	const [inputText, setInputText] = useState("");
-	const { states, setters } = useGlobal();
-	const { setOrder } = setters;
+	const { states } = useGlobal();
 	const { order } = states;
+
+	const newOrder = [];
+
+	if (order) {
+		newOrder.push(order);
+	}
+
 	const fetchRestaurant = async () => {
 		try {
 			const response = await axios.get<ApiResponse>(`${BASE_URL}/restaurants`, {
@@ -51,7 +56,8 @@ const Feed = () => {
 					auth: localStorage.getItem("token"),
 				},
 			});
-			setOrder(response.data.order);
+			setActiveOrder(response.data.order);
+			console.log(order);
 		} catch (error) {
 			console.log(error);
 		}
@@ -91,10 +97,10 @@ const Feed = () => {
 				</InputGroup>
 				{restaurants.length > 0 && filterRestaurants}
 			</RestaurantCards>
-			{order && (
+			{activeOrder && (
 				<Order
-					restaurantName={order.restaurantName}
-					totalPrice={order.totalPrice}
+					restaurantName={activeOrder.restaurantName}
+					totalPrice={activeOrder.totalPrice}
 				/>
 			)}
 			<NavBar page={"home"} />
