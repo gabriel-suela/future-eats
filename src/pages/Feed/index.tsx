@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
 import Order from "../../components/Order";
 import RestaurantCard from "../../components/RestaurantCard";
-import { Restaurant, useGlobal } from "../../context/GlobalContext";
+import { OrderP, Restaurant, useGlobal } from "../../context/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../utils/url";
 import { Container, RestaurantCards } from "./style";
@@ -19,6 +19,10 @@ interface ApiResponse {
 type FilterRestaurantProps = {
 	name: string;
 };
+
+interface ActiveOrderResponse {
+	order: OrderP[];
+}
 
 const Feed = () => {
 	useProtectedPage();

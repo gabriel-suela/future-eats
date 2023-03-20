@@ -1,12 +1,8 @@
 import { TimeIcon } from "@chakra-ui/icons";
+import { OrderP } from "../../context/GlobalContext";
 import { Container, OrderInfo, Time } from "./styled";
 
-interface OrderProps {
-	totalPrice: number;
-	restaurantName: string;
-}
-
-const Order = ({ totalPrice, restaurantName }: OrderProps) => {
+const Order = ({ totalPrice, restaurantName }: OrderP) => {
 	return (
 		<Container>
 			<Time>

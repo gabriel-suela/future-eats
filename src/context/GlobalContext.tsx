@@ -27,17 +27,16 @@ type Product = {
 export interface OrderP {
 	restaurantName: string;
 	totalPrice: number;
-	price: number;
 }
 
 interface ContextProps {
 	states: {
 		cart: CartItem[];
 		restaurant: Restaurant | undefined;
-		order: OrderP | undefined;
+		order: OrderP | null;
 	};
 	setters: {
-		setOrder: (order: OrderP | undefined) => void;
+		setOrder: (order: any | null) => void;
 		setCart: (cart: CartItem[]) => void;
 	};
 	requests: {
