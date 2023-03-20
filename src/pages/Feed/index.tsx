@@ -5,74 +5,97 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
+import Order from "../../components/Order";
 import RestaurantCard from "../../components/RestaurantCard";
-import { Restaurant } from "../../context/GlobalContext";
+import { Restaurant, useGlobal } from "../../context/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { BASE_URL } from "../../utils/url";
 import { Container, RestaurantCards } from "./style";
 
 interface ApiResponse {
-  restaurants: Restaurant[];
+	restaurants: Restaurant[];
 }
 
 type FilterRestaurantProps = {
-  name: string;
+	name: string;
 };
 
 const Feed = () => {
-  useProtectedPage();
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-  const [inputText, setInputText] = useState("");
-  const fetchRestaurant = async () => {
-    try {
-      const response = await axios.get<ApiResponse>(`${BASE_URL}/restaurants`, {
-        headers: {
-          auth: localStorage.getItem("token"),
-        },
-      });
-      setRestaurants(response.data.restaurants);
-    } catch (error: any) {
-      toast.error(`${error.data.message}`);
-    }
-  };
+	useProtectedPage();
+	const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+	const [inputText, setInputText] = useState("");
+	const { states, setters } = useGlobal();
+	const { setOrder } = setters;
+	const { order } = states;
+	const fetchRestaurant = async () => {
+		try {
+			const response = await axios.get<ApiResponse>(`${BASE_URL}/restaurants`, {
+				headers: {
+					auth: localStorage.getItem("token"),
+				},
+			});
+			setRestaurants(response.data.restaurants);
+		} catch (error: any) {
+			toast.error(`${error.data.message}`);
+		}
+	};
 
-  useEffect(() => {
-    fetchRestaurant();
-  }, []);
+	const fetchActiveOrder = async () => {
+		try {
+			const response = await axios.get(`${BASE_URL}/active-order`, {
+				headers: {
+					auth: localStorage.getItem("token"),
+				},
+			});
+			setOrder(response.data.order);
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
-  const filterRestaurants = restaurants
-    .filter(
-      (restaurant: FilterRestaurantProps) =>
-        !inputText ||
-        restaurant.name.toLowerCase().includes(inputText.toLowerCase())
-    )
-    .map((restaurant, item) => (
-      <RestaurantCard key={item} restaurant={restaurant} />
-    ));
+	useEffect(() => {
+		fetchRestaurant();
+		fetchActiveOrder();
+	}, []);
 
-  return (
-    <Container>
-      <Header visibleArrow={true} title={"Restaurantes"} />
-      <RestaurantCards>
-        <InputGroup>
-          <InputLeftElement
-            background={"transparent"}
-            pointerEvents={"none"}
-            children={<SearchIcon background={"transparent"} />}
-          />
-          <Input
-            type="tel"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-            placeholder="Nome do restaurante"
-          />
-        </InputGroup>
-        {restaurants.length > 0 && filterRestaurants}
-      </RestaurantCards>
+	const filterRestaurants = restaurants
+		.filter(
+			(restaurant: FilterRestaurantProps) =>
+				!inputText ||
+				restaurant.name.toLowerCase().includes(inputText.toLowerCase())
+		)
+		.map((restaurant, item) => (
+			<RestaurantCard key={item} restaurant={restaurant} />
+		));
 
-      <NavBar page={"home"} />
-    </Container>
-  );
+	return (
+		<Container>
+			<Header visibleArrow={true} title={"Restaurantes"} />
+			<RestaurantCards>
+				<InputGroup>
+					<InputLeftElement
+						background={"transparent"}
+						pointerEvents={"none"}
+						children={<SearchIcon background={"transparent"} />}
+					/>
+					<Input
+						type="tel"
+						value={inputText}
+						onChange={(e) => setInputText(e.target.value)}
+						placeholder="Nome do restaurante"
+					/>
+				</InputGroup>
+				{restaurants.length > 0 && filterRestaurants}
+			</RestaurantCards>
+			{order && (
+				<Order
+					restaurantName={order.restaurantName}
+					totalPrice={order.totalPrice}
+				/>
+			)}
+			<NavBar page={"home"} />
+		</Container>
+	);
 };
 
 export default Feed;

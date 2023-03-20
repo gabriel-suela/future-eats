@@ -1,4 +1,3 @@
-import { Alert } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { toast, Toaster } from "sonner";
@@ -25,7 +24,7 @@ const Cart = () => {
   const [fullPrice, setFullPrice] = useState(() => 0);
   const { states, setters } = useGlobal();
   const { setOrder, setCart } = setters;
-  const { cart = [], restaurant, order } = states;
+  const { cart = [], restaurant, } = states;
   useProtectedPage();
 
   const fetchProfile = async () => {
