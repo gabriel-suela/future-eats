@@ -57,7 +57,6 @@ const Feed = () => {
 				},
 			});
 			setActiveOrder(response.data.order);
-			console.log(order);
 		} catch (error) {
 			console.log(error);
 		}
@@ -100,7 +99,10 @@ const Feed = () => {
 			{activeOrder && (
 				<Order
 					restaurantName={activeOrder.restaurantName}
-					totalPrice={activeOrder.totalPrice}
+					totalPrice={activeOrder.totalPrice
+						.toFixed(2)
+						.toString()
+						.replace(".", ",")}
 				/>
 			)}
 			<NavBar page={"home"} />

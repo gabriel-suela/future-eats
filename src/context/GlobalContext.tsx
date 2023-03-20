@@ -26,7 +26,7 @@ type Product = {
 
 export interface OrderProps {
 	restaurantName: string;
-	totalPrice: number;
+	totalPrice: any;
 }
 
 interface ContextProps {
