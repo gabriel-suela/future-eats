@@ -11,7 +11,7 @@ const Order = ({ totalPrice, restaurantName }: OrderP) => {
 			<OrderInfo>
 				<h3>Pedido em andamento</h3>
 				<p>{restaurantName}</p>
-				<span>SUBTOTAL R${totalPrice.toFixed(2).replace(".", ",")}</span>
+				<span>SUBTOTAL R${totalPrice}</span>
 			</OrderInfo>
 		</Container>
 	);
